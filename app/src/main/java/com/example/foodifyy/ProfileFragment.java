@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private View rootView;
+    private View view;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
     EditText emailEditText, fnameEditText, lnameEditText, unameEditText;
@@ -76,24 +76,24 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
         
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
 
-         emailEditText = rootView.findViewById(R.id.display_email);
-         fnameEditText = rootView.findViewById(R.id.display_fname);
-         lnameEditText = rootView.findViewById(R.id.display_lname);
-         unameEditText = rootView.findViewById(R.id.display_uname);
+         emailEditText = view.findViewById(R.id.display_email);
+         fnameEditText = view.findViewById(R.id.display_fname);
+         lnameEditText = view.findViewById(R.id.display_lname);
+         unameEditText = view.findViewById(R.id.display_uname);
 
         retrieveProfileInformation();
        
 
        
 
-        return rootView;
+        return view;
     }
 
     private void retrieveProfileInformation() {
