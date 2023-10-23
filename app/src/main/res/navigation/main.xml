@@ -16,7 +16,7 @@
         android:label="Order"
         tools:layout="@layout/fragment_order" />
     <fragment
-        android:id="@+id/Calendar"
+        android:id="@+id/MealPrep"
         android:name="com.example.foodifyy.CalendarFragment"
         android:label="Calendar"
         tools:layout="@layout/fragment_calendar" />

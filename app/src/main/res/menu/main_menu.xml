@@ -9,9 +9,9 @@
             android:icon="@drawable/foodlogo"
             android:title="Order"/>
 
-        <item android:id="@+id/Calendar"
+        <item android:id="@+id/MealPrep"
             android:icon="@drawable/calendarlogo"
-            android:title="Calendar"/>
+            android:title="Meal Prep"/>
 
         <item android:id="@+id/Bank"
             android:icon="@drawable/banklogo"
@@ -20,6 +20,7 @@
         </item>
     </group>
 
+<group android:checkableBehavior="single">
     <item android:title="Profile">
         <menu>
             <item android:id="@+id/Profile"
@@ -31,6 +32,7 @@
                 android:title="History"/>
         </menu>
     </item>
+</group>
 
     <item android:title="Communication">
         <menu>
@@ -43,6 +45,7 @@
                 android:title="Rate Us"/>
         </menu>
     </item>
+
 
 
 
