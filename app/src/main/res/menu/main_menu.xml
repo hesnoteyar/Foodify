@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single" >
+        <item android:id="@+id/Home"
+            android:icon="@drawable/homelogo"
+            android:title="Home"/>
+
+        <item android:id="@+id/Order"
+            android:icon="@drawable/foodlogo"
+            android:title="Order"/>
+
+        <item android:id="@+id/Calendar"
+            android:icon="@drawable/calendarlogo"
+            android:title="Calendar"/>
+
+        <item android:id="@+id/Bank"
+            android:icon="@drawable/banklogo"
+            android:title="Bank">
+
+        </item>
+    </group>
+
+    <item android:title="Profile">
+        <menu>
+            <item android:id="@+id/Profile"
+                android:icon="@drawable/profilelogo"
+                android:title="Profile"/>
+
+            <item android:id="@+id/History"
+                android:icon="@drawable/historylogo"
+                android:title="History"/>
+        </menu>
+    </item>
+
+    <item android:title="Communication">
+        <menu>
+            <item android:id="@+id/Share"
+                android:icon="@drawable/sharelogo"
+                android:title="Share"/>
+
+            <item android:id="@+id/RateUs"
+                android:icon="@drawable/ratelogo"
+                android:title="Rate Us"/>
+        </menu>
+    </item>
+
+
+
+</menu>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/Home">
+
+    <fragment
+        android:id="@+id/Home"
+        android:name="com.example.foodifyy.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/Order"
+        android:name="com.example.foodifyy.OrderFragment"
+        android:label="Order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/Calendar"
+        android:name="com.example.foodifyy.CalendarFragment"
+        android:label="Calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/Profile"
+        android:name="com.example.foodifyy.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/History"
+        android:name="com.example.foodifyy.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/Bank"
+        android:name="com.example.foodifyy.BankFragment"
+        android:label="fragment_bank"
+        tools:layout="@layout/fragment_bank" />
+</navigation>
