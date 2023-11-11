@@ -27,7 +27,7 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
 
     FirebaseAuth auth;
     FirebaseDatabase db;
-    Button register;
+    Button next;
     EditText fname, lname, uname, email, password, retypepass;
     Handler h = new Handler();
 
@@ -37,21 +37,19 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_registerscreen);
 
         auth = FirebaseAuth.getInstance();
-        register = findViewById(R.id.btn_newaccnt);
-        fname = findViewById(R.id.first_name);
-        lname = findViewById(R.id.last_name);
+        next = findViewById(R.id.btn_next);
         uname = findViewById(R.id.username);
         email = findViewById(R.id.email_add);
         password = findViewById(R.id.password);
         retypepass = findViewById(R.id.password2);
-        register.setOnClickListener(this);
+        next.setOnClickListener(this);
 
 
     }
 
     @Override
     public void onClick(View v) {
-        if (v == register) {
+        if (v == next) {
             String fn = fname.getText().toString();
             String ln = lname.getText().toString();
             String un = uname.getText().toString();
@@ -61,28 +59,26 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
 
 
 
-            if (TextUtils.isEmpty(fn) || TextUtils.isEmpty(ln) || TextUtils.isEmpty(un) || TextUtils.isEmpty(emailaddress) || TextUtils.isEmpty(pw) || TextUtils.isEmpty(pw2)) {
+            if (TextUtils.isEmpty(un) || TextUtils.isEmpty(emailaddress) || TextUtils.isEmpty(pw) || TextUtils.isEmpty(pw2)) {
                 Toast.makeText(getApplicationContext(), "Please insert all values", Toast.LENGTH_SHORT).show();
             } else {
                 auth.createUserWithEmailAndPassword(emailaddress, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            saveUserDataToFirebase(fn, ln, un, emailaddress);
-                            Toast.makeText(registerscreen.this, "Register Successful", Toast.LENGTH_SHORT).show();
+                            saveUserDataToFirebase(un, emailaddress);
+                            Toast.makeText(registerscreen.this, "Info Recorded", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(registerscreen.this, loginscreen.class));
                         } else {
                             Toast.makeText(registerscreen.this, "Registered Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    private void saveUserDataToFirebase(String fn, String ln, String un, String emailaddress) {
+                    private void saveUserDataToFirebase(String un, String emailaddress) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         String userID = firebaseUser.getUid();
 
                         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
-                        databaseReference.child(userID).child("firstname").setValue(fn);
-                        databaseReference.child(userID).child("lastname").setValue(ln);
                         databaseReference.child(userID).child("username").setValue(un);
                         databaseReference.child(userID).child("emailaddress").setValue(emailaddress);
                     }
