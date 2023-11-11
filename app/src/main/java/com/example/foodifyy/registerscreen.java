@@ -50,8 +50,6 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v == next) {
-            String fn = fname.getText().toString();
-            String ln = lname.getText().toString();
             String un = uname.getText().toString();
             String emailaddress = email.getText().toString();
             String pw = password.getText().toString();
