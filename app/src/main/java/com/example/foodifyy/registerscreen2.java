@@ -48,7 +48,7 @@ public class registerscreen2 extends AppCompatActivity {
                 } else {
                     saveInfoDataToFirebase(fn, ln, mn);
                     Toast.makeText(registerscreen2.this, "Info saved", Toast.LENGTH_SHORT);
-                    //startActivity(new Intent(registerscreen2.this, registerscreen2.class));
+                    startActivity(new Intent(registerscreen2.this, loginscreen.class));
                 }
             }
 
