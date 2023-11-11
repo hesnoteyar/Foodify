@@ -66,7 +66,7 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             saveUserDataToFirebase(un, emailaddress);
                             Toast.makeText(registerscreen.this, "Info Recorded", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(registerscreen.this, loginscreen.class));
+                            startActivity(new Intent(registerscreen.this, registerscreen2.class));
                         } else {
                             Toast.makeText(registerscreen.this, "Registered Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

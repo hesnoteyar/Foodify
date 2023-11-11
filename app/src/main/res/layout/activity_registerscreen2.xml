@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1B1B"
+    tools:context=".registerscreen2">
+
+    <Button
+        android:id="@+id/btn_next2"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/roundstyle_buttons"
+        android:backgroundTint="#57B65F"
+        android:textColor="@color/white"
+        android:layout_marginBottom="60dp"/>
+
+    <!-- Last Name -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_next2"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="120dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/lastname"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="Last Name"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Middle Name -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TE1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/middlename"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="Middle Name"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- First Name -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TE2"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/firstname"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="First Name"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+</RelativeLayout>
