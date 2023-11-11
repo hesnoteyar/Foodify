@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#1C1B1B"
+    android:layout_height="match_parent"
+    tools:context=".registerscreen3">
+
+    <Button
+        android:id="@+id/create_acc"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:text="CREATE ACCOUNT"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/roundstyle_buttons"
+        android:backgroundTint="#57B65F"
+        android:textColor="@color/white"
+        android:layout_marginBottom="60dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/create_acc"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="80dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/postal_code"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="Postal Code"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TE1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/region"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="Region, Province"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TE2"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/barangay"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="Barangay, City"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TE3"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/houseno"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="House No., Building, Street Name"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TE5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TE4"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="15dp"
+
+
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeColor="#000000"
+        app:hintTextColor="#57B65F"
+        app:passwordToggleTint="@color/white">
+
+        <EditText
+            android:id="@+id/phone"
+            android:fontFamily="@font/opensansveriable"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:autofillHints=""
+            android:background="@drawable/input_background"
+            android:hint="Phone Number"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>
