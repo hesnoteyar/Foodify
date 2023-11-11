@@ -63,8 +63,8 @@ public class registerscreen3 extends AppCompatActivity {
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
                 databaseReference.child(userID).child("postalcode").setValue(postalcode);
-                databaseReference.child(userID).child("region/province").setValue(regionprovince);
-                databaseReference.child(userID).child("barangay/city").setValue(barangaycity);
+                databaseReference.child(userID).child("region,province").setValue(regionprovince);
+                databaseReference.child(userID).child("barangay,city").setValue(barangaycity);
                 databaseReference.child(userID).child("housenumber").setValue(housenumber);
                 databaseReference.child(userID).child("phonenumber").setValue(phoneno);
             }
