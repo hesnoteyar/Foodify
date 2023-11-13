@@ -46,7 +46,8 @@ public class loginscreen extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {String email = emailfield.getText().toString();
+            public void onClick(View v) {
+                String email = emailfield.getText().toString();
                 String password = passwordfield.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
