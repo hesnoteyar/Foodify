@@ -54,12 +54,11 @@
         android:id="@+id/Profilebtn"
         android:layout_width="147dp"
         android:layout_height="78dp"
-        android:layout_below="@+id/search"
-        android:background="@drawable/input_background2"
+        android:layout_below="@+id/viewflipper"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="301dp"
-        android:layout_marginLeft="40sp">
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/input_background2">
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,12 +93,11 @@
         android:id="@+id/Orderbtn"
         android:layout_width="147dp"
         android:layout_height="78dp"
-        android:layout_below="@+id/search"
-        android:background="@drawable/input_background2"
+        android:layout_below="@+id/viewflipper"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="301dp"
-        android:layout_marginRight="40sp">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/input_background2">
 
         <TextView
             android:layout_width="wrap_content"
@@ -138,7 +136,7 @@
         android:background="@drawable/input_background2"
         android:layout_alignParentRight="true"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="40sp">
+        android:layout_marginRight="44dp">
 
         <TextView
             android:id="@+id/textView"
@@ -178,7 +176,7 @@
         android:background="@drawable/input_background2"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="40sp">
+        android:layout_marginLeft="44dp">
 
         <TextView
             android:id="@+id/textView2"
@@ -208,6 +206,44 @@
             app:layout_constraintVertical_bias="0.511" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ViewFlipper
+        android:id="@+id/viewflipper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="44sp"
+        android:paddingRight="44sp"
+        android:autoStart="true"
+        android:flipInterval="2000"
+        android:inAnimation="@anim/slide_in_left"
+        android:outAnimation="@anim/slide_out_right"
+        android:layout_below="@+id/search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40sp">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/panel_one"
+            app:shapeAppearanceOverlay="@style/roundedimageview"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/panel_two"
+            app:shapeAppearanceOverlay="@style/roundedimageview"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/panel_three"
+            app:shapeAppearanceOverlay="@style/roundedimageview"/>
+
+    </ViewFlipper>
 
 
 

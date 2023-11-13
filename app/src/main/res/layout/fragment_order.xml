@@ -56,13 +56,7 @@
             android:src="@drawable/panel_five"
             app:shapeAppearanceOverlay="@style/roundedimageview" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/panel_six"
-            app:shapeAppearanceOverlay="@style/roundedimageview" />
+
     </ViewFlipper>
 
     <TextView
