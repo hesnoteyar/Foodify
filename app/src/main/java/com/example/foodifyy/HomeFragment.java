@@ -11,6 +11,12 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -33,6 +39,9 @@ public class HomeFragment extends Fragment {
 
     private ConstraintLayout profile, bank, order, calendar;
     Handler h = new Handler();
+    TextView greeting;
+    FirebaseAuth auth;
+    DatabaseReference databaseReference;
 
 
     public HomeFragment() {
@@ -81,6 +90,13 @@ public class HomeFragment extends Fragment {
         bank = v.findViewById(R.id.Bankbtn);
         order = v.findViewById(R.id.Orderbtn);
         calendar = v.findViewById(R.id.Calendarbtn);
+        greeting = v.findViewById(R.id.tv1);
+
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
+
+        displayGreetings();
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +171,16 @@ public class HomeFragment extends Fragment {
         });
 
         return v;
+    }
+
+    private void displayGreetings() {
+        databaseReference.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                String greet = documentSnapshot.child("username").getValue(String.class);
+
+                greeting.setText("Hello, " + greet + "!");
+            }
+        });
     }
 
     private void disableInteractions() {

@@ -71,6 +71,7 @@
         android:paddingTop="15dp"
 
 
+
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:boxStrokeColor="#000000"
@@ -101,14 +102,12 @@
         android:id="@+id/TE2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:textColorHint="@color/white"
-        android:paddingTop="15dp"
         android:layout_above="@+id/TE1"
         app:hintTextColor="#57B65F"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-
+        android:hint="Email Address"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:boxStrokeColor="#000000"
@@ -123,7 +122,6 @@
             android:background="@drawable/input_background"
             android:autofillHints=""
             android:textSize="15sp"
-            android:hint="Email Address"
             android:textColorHint="@color/white"
             android:inputType="text"
             android:textColor="@color/white"

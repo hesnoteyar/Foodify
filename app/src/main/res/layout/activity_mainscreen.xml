@@ -15,7 +15,7 @@
             android:id="@+id/layouttoolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="#FF688D5F"
+            android:background="#1C1B1B"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"
@@ -24,10 +24,10 @@
 
             <ImageView
                 android:id="@+id/menu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/menulogo" />
+                android:src="@drawable/menu" />
 
 
         </LinearLayout>
