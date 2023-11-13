@@ -70,7 +70,7 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            saveUserDataToFirebase(un, emailaddress);
+                                            saveUserDataToFirebase(un, emailaddress, pw);
                                             Toast.makeText(registerscreen.this, "Email verification link sent", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(registerscreen.this, registerscreen2.class));
                                         } else {
@@ -82,13 +82,14 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
                         }
                     }
 
-                    private void saveUserDataToFirebase(String un, String emailaddress) {
+                    private void saveUserDataToFirebase(String un, String emailaddress, String pw) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         String userID = firebaseUser.getUid();
 
                         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
                         databaseReference.child(userID).child("username").setValue(un);
                         databaseReference.child(userID).child("emailaddress").setValue(emailaddress);
+                        databaseReference.child(userID).child("password").setValue(pw);
                     }
                 });
             }

@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
@@ -68,11 +69,18 @@ public class loginscreen extends AppCompatActivity {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(loginscreen.this, "Logged in Successfuly", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), mainscreen.class));
+                        if (task.isSuccessful()){
+                            FirebaseUser user = auth.getCurrentUser();
+
+                            if (user != null && user.isEmailVerified()) {
+                                Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), mainscreen.class));
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Please verify your email first!", Toast.LENGTH_SHORT).show();
+                                auth.signOut();
+                            }
                         } else {
-                            Toast.makeText(loginscreen.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(loginscreen.this, "Login Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
