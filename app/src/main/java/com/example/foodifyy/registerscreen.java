@@ -64,11 +64,21 @@ public class registerscreen extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            saveUserDataToFirebase(un, emailaddress);
-                            Toast.makeText(registerscreen.this, "Info Recorded", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(registerscreen.this, registerscreen2.class));
-                        } else {
-                            Toast.makeText(registerscreen.this, "Registered Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = auth.getCurrentUser();
+                            if (user != null) {
+                                user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            saveUserDataToFirebase(un, emailaddress);
+                                            Toast.makeText(registerscreen.this, "Email verification link sent", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(registerscreen.this, registerscreen2.class));
+                                        } else {
+                                            Toast.makeText(registerscreen.this, "Registered Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
                         }
                     }
 
