@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +44,8 @@ public class HomeFragment extends Fragment {
     TextView greeting;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
+    private HomeFragment homeFragment;
+
 
 
     public HomeFragment() {
@@ -98,25 +102,16 @@ public class HomeFragment extends Fragment {
 
         displayGreetings();
 
+
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+
+                NavController navController = Navigation.findNavController(getActivity(), R.id.navHostFragment);
+                navController.navigate(R.id.action_Home_to_Profile);
                 disableInteractions();
-
-
-                Fragment fragment = new ProfileFragment();
-                FragmentTransaction transaction = getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction();
-
-                transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_right);
-
-                transaction.replace(R.id.navHostFragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
-
-
             }
         });
 
@@ -124,36 +119,24 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                NavController navController = Navigation.findNavController(getActivity(), R.id.navHostFragment);
+                navController.navigate(R.id.action_Home_to_Bank);
                 disableInteractions();
-                Fragment fragment = new BankFragment();
-                FragmentTransaction transaction = getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction();
-                transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_right);
 
 
-                transaction.replace(R.id.navHostFragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
 
             }
+
         });
 
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+
+                NavController navController = Navigation.findNavController(getActivity(), R.id.navHostFragment);
+                navController.navigate(R.id.action_Home_to_Order);
                 disableInteractions();
-
-                Fragment fragment = new OrderFragment();
-                FragmentTransaction transaction = getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction();
-                transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_right);
-
-                transaction.replace(R.id.navHostFragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
 
             }
         });
@@ -162,22 +145,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                disableInteractions();
 
-                Fragment fragment = new CalendarFragment();
-                FragmentTransaction transaction = getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction();
-                transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_left, R.anim.slide_out_right);
-                transaction.replace(R.id.navHostFragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
+                NavController navController = Navigation.findNavController(getActivity(), R.id.navHostFragment);
+                navController.navigate(R.id.action_Home_to_MealPrep);
+                disableInteractions();
 
             }
         });
 
         return v;
     }
+
+
 
     private void displayGreetings() {
         databaseReference.get().addOnSuccessListener(documentSnapshot -> {
@@ -201,12 +180,10 @@ public class HomeFragment extends Fragment {
         bank.setEnabled(true);
         order.setEnabled(true);
         calendar.setEnabled(true);
-
     }
 
     public void onResume() {
-        super.onResume();
         enableInteractions();
+        super.onResume();
     }
-
 }
