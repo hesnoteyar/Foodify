@@ -115,6 +115,8 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.navHostFragment, fragment)
                         .addToBackStack(null)
                         .commit();
+
+
             }
         });
 
@@ -122,7 +124,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                disableInteractions();               Fragment fragment = new BankFragment();
+                disableInteractions();
+                Fragment fragment = new BankFragment();
                 FragmentTransaction transaction = getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction();
@@ -132,6 +135,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.navHostFragment, fragment)
                         .addToBackStack(null)
                         .commit();
+
             }
         });
 
@@ -150,6 +154,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.navHostFragment, fragment)
                         .addToBackStack(null)
                         .commit();
+
             }
         });
 
@@ -167,6 +172,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.navHostFragment, fragment)
                         .addToBackStack(null)
                         .commit();
+
             }
         });
 
