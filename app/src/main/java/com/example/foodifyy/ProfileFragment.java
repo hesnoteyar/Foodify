@@ -37,7 +37,7 @@ public class ProfileFragment extends Fragment {
     private View view;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
-    EditText emailEditText, fnameEditText, lnameEditText, unameEditText;
+    EditText emailEditText, unameEditText, contactEditText, fnameEditText, mnameEditText, lnameEditText;
 
 
     public ProfileFragment() {
@@ -87,6 +87,8 @@ public class ProfileFragment extends Fragment {
          fnameEditText = view.findViewById(R.id.display_fname);
          lnameEditText = view.findViewById(R.id.display_lname);
          unameEditText = view.findViewById(R.id.display_uname);
+         contactEditText = view.findViewById(R.id.display_number);
+         mnameEditText = view.findViewById(R.id.display_mname);
 
         retrieveProfileInformation();
        
@@ -101,13 +103,16 @@ public class ProfileFragment extends Fragment {
             if (documentSnapshot.exists()) {
                 String email = documentSnapshot.child("emailaddress").getValue(String.class);
                 String firstname = documentSnapshot.child("firstname").getValue(String.class);
+                String middlename = documentSnapshot.child("middlename").getValue(String.class);
                 String lastname = documentSnapshot.child("lastname").getValue(String.class);
                 String username = documentSnapshot.child("username").getValue(String.class);
+                String phone = documentSnapshot.child("phonenumber").getValue(String.class);
 
                 emailEditText.setText(email);
                 fnameEditText.setText(firstname);
                 lnameEditText.setText(lastname);
                 unameEditText.setText(username);
+                mnameEditText.setText(middlename);
             }
         });
     }
