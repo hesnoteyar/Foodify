@@ -1,6 +1,8 @@
 package com.example.foodifyy;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,7 +40,7 @@ public class ProfileFragment extends Fragment {
     private View view;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
-    EditText emailEditText, unameEditText, contactEditText, fnameEditText, mnameEditText, lnameEditText;
+    TextView emailEditText, unameEditText, contactEditText, fnameEditText, mnameEditText, lnameEditText, addressEditText, edit;
 
 
     public ProfileFragment() {
@@ -83,14 +86,26 @@ public class ProfileFragment extends Fragment {
         FirebaseUser currentUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
 
-         emailEditText = view.findViewById(R.id.display_email);
+        Context context = getContext();
+
+
+        emailEditText = view.findViewById(R.id.display_email);
          fnameEditText = view.findViewById(R.id.display_fname);
          lnameEditText = view.findViewById(R.id.display_lname);
          unameEditText = view.findViewById(R.id.display_uname);
          contactEditText = view.findViewById(R.id.display_number);
          mnameEditText = view.findViewById(R.id.display_mname);
+         addressEditText = view.findViewById(R.id.display_address);
+         edit = view.findViewById(R.id.edit_profile);
 
         retrieveProfileInformation();
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity( new Intent(context, EditProfile.class));
+            }
+        });
        
 
        
@@ -107,12 +122,17 @@ public class ProfileFragment extends Fragment {
                 String lastname = documentSnapshot.child("lastname").getValue(String.class);
                 String username = documentSnapshot.child("username").getValue(String.class);
                 String phone = documentSnapshot.child("phonenumber").getValue(String.class);
+                String house_no = documentSnapshot.child("housenumber").getValue(String.class);
+                String barangay_city = documentSnapshot.child("barangay,city").getValue(String.class);
+                String region_province = documentSnapshot.child("region,province").getValue(String.class);
 
                 emailEditText.setText(email);
                 fnameEditText.setText(firstname);
                 lnameEditText.setText(lastname);
                 unameEditText.setText(username);
                 mnameEditText.setText(middlename);
+                contactEditText.setText(phone);
+                addressEditText.setText(house_no + ", " + barangay_city + ", " + region_province);
             }
         });
     }
