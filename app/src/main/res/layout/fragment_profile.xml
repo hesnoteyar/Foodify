@@ -42,7 +42,7 @@
                 android:textColor="#57B65F"
                 android:fontFamily="@font/opensansveriable"
                 android:textSize="25dp"
-                android:layout_marginLeft="140dp"
+                android:layout_marginLeft="150dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -93,6 +93,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_marginLeft="20dp"
+                android:textColor="#808080"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/display_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Contact No."
                 android:layout_marginLeft="20dp"
                 android:textColor="#808080"
@@ -112,6 +135,8 @@
                 android:fontFamily="@font/opensansveriable"
                 android:layout_marginTop="10dp"
                 />
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -159,28 +184,6 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address"
-                android:layout_marginLeft="20dp"
-                android:textColor="#808080"
-                android:textSize="17dp"
-                android:fontFamily="@font/opensansveriable"
-                android:layout_marginTop="20dp"
-                />
-
-            <TextView
-                android:id="@+id/display_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="null"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                android:fontFamily="@font/opensansveriable"
-                android:layout_marginTop="10dp"
-                />
 
             <TextView
                 android:layout_width="wrap_content"
