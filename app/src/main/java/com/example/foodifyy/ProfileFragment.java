@@ -4,23 +4,18 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +36,7 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     DatabaseReference databaseReference;
     TextView emailEditText, unameEditText, contactEditText, fnameEditText, mnameEditText, lnameEditText, addressEditText, edit;
+    ImageView pfp;
 
 
     public ProfileFragment() {
@@ -97,6 +93,7 @@ public class ProfileFragment extends Fragment {
          mnameEditText = view.findViewById(R.id.display_mname);
          addressEditText = view.findViewById(R.id.display_address);
          edit = view.findViewById(R.id.edit_profile);
+         pfp = view.findViewById(R.id.profile);
 
         retrieveProfileInformation();
 
@@ -134,6 +131,12 @@ public class ProfileFragment extends Fragment {
                 mnameEditText.setText(middlename);
                 contactEditText.setText(phone);
                 addressEditText.setText(house_no + ", " + barangay_city + ", " + region_province);
+
+                String imageUrl = documentSnapshot.child("profileImage").getValue(String.class);
+
+                if (imageUrl != null){
+                    Glide.with(ProfileFragment.this).load(imageUrl).into(pfp);
+                }
             }
         });
     }

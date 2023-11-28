@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -20,6 +21,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
+import com.bumptech.glide.Glide;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -94,10 +96,8 @@ public class EditProfile extends AppCompatActivity {
                         Toast.makeText(EditProfile.this, "Image upload Failed", Toast.LENGTH_SHORT).show();
                     });
                 }
-
             }
         });
-
 
 
 
@@ -108,10 +108,23 @@ public class EditProfile extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 startActivityForResult(intent, 1);
-
-
             }
         });
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            profile.setImageURI(imageUri);
+
+            // Upload the image to Firebase Storage and save the URL to the user's database
+            uploadImageToFirebaseStorage();
+
+        }
     }
 
     private void saveUserDataToFirebase(String ETemail, String ETuname, String ETcontact, String ETfname, String ETmname, String ETlname, String EThouse, String ETbarangay, String ETregion) {
@@ -153,10 +166,15 @@ public class EditProfile extends AppCompatActivity {
                 houseEdit.setText(house_no);
                 barangayEdit.setText(barangay_city);
                 regionEdit.setText(region_province);
+
+                String imageUrl = documentSnapshot.child("profileImage").getValue(String.class);
+
+                if (imageUrl != null){
+                    Glide.with(EditProfile.this).load(imageUrl).into(profile);
+                }
             }
         });
     }
-
     private void uploadImageToFirebaseStorage() {
         if (imageUri != null) {
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
