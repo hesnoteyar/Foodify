@@ -1,27 +1,33 @@
 package com.example.foodifyy;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 
 public class EditProfile extends AppCompatActivity {
 
     FirebaseAuth auth;
+    ImageView profile;
     DatabaseReference databaseReference;
+    StorageReference storageReference;
+    Uri imageUri;
     EditText emailEdit, unameEdit, contactEdit, fnameEdit, mnameEdit, lnameEdit, houseEdit, barangayEdit, regionEdit;
     TextView save;
 
@@ -34,7 +40,9 @@ public class EditProfile extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
+        storageReference = FirebaseStorage.getInstance().getReference("users").child(currentUser.getUid());
 
+        profile = findViewById(R.id.profile_pfp);
         emailEdit = findViewById(R.id.edit_email);
         unameEdit = findViewById(R.id.edit_uname);
         contactEdit = findViewById(R.id.edit_number);
@@ -67,6 +75,39 @@ public class EditProfile extends AppCompatActivity {
                 saveUserDataToFirebase(ETemail, ETuname, ETcontact, ETfname, ETmname, ETlname, EThouse, ETbarangay, ETregion);
                 Toast.makeText(EditProfile.this, "Updated Successfuly", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), mainscreen.class));
+
+                if (imageUri != null) {
+                    String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    String imageName = "profile_images/" + currentUserId + ".jpg";
+
+                    StorageReference imageRef = storageReference.child(imageName);
+
+                    imageRef.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
+                       imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                           String imageUrl = uri.toString();
+
+                           databaseReference.child("profileImage").setValue(imageUrl);
+
+                           Toast.makeText(EditProfile.this, "Image uploaded and saved successfully", Toast.LENGTH_SHORT).show();
+                       });
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(EditProfile.this, "Image upload Failed", Toast.LENGTH_SHORT).show();
+                    });
+                }
+
+            }
+        });
+
+
+
+
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 1);
 
 
             }
@@ -114,5 +155,30 @@ public class EditProfile extends AppCompatActivity {
                 regionEdit.setText(region_province);
             }
         });
+    }
+
+    private void uploadImageToFirebaseStorage() {
+        if (imageUri != null) {
+            String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            String imageName = "profile_images/" + currentUserId + ".jpg";
+
+
+            StorageReference imageRef = storageReference.child(imageName);
+
+            imageRef.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
+                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    String imageUrl = uri.toString();
+
+                    databaseReference.child("profileImage").setValue(imageUrl);
+
+                    Toast.makeText(EditProfile.this, "Image uploaded and saved successfully", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
+                });
+
+            }).addOnFailureListener(e -> {
+                Toast.makeText(EditProfile.this, "Image upload Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 }

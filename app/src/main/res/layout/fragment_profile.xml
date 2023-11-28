@@ -30,8 +30,10 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="130dp"
                 android:layout_height="130dp"
+                android:src="@drawable/default_pfp"
+                app:civ_border_color="#808080"
+                app:civ_border_width="2dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_launcher_background"
                 android:layout_marginLeft="150dp"/>
 
             <TextView
