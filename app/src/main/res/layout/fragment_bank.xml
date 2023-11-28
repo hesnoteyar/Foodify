@@ -1,212 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bankbackground"
+    android:background="#1C1B1B"
     tools:context=".BankFragment">
 
-
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/my_wallet"
         android:layout_width="wrap_content"
+        android:textSize="40dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-light"
-        android:text="Welcome to your bank!"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp"
+        android:text="My Wallet"
         android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        android:gravity="center_horizontal|center_vertical"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="368dp"
-        android:layout_height="98dp"
-        android:background="@drawable/roundstyle_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176">
+        android:id="@+id/pts"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/input_background2"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@+id/my_wallet">
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="Total Balance"
+            android:fontFamily="@font/opensansveriable"
+            android:text="0000 pts"
             android:textColor="@color/white"
+            android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintHorizontal_bias="0.069"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.797" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/moneyamount"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="₱ 000,000"
-            android:textColor="@color/white"
-            android:textSize="40dp"
+            android:src="@drawable/recharge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.948"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.275" />
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="107dp"
-            android:layout_height="51dp"
-            android:background="@drawable/roundstyle_buttons_white"
-            android:text="Cash in +"
-            android:textColor="@color/black"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topup"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/pts"
+        android:background="@drawable/input_background2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/cashin"
-        android:layout_width="116dp"
-        android:layout_height="111dp"
-        android:background="@drawable/roundstyle_layout"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recharge"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_toRightOf="@+id/topup"
+        android:layout_below="@+id/pts"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/input_background2"
+        android:layout_marginTop="50dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/banklogo_white"></ImageView>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/recharge_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="Cash in"
-            android:textColor="@color/white"
-            android:textSize="20dp"></TextView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/send"
-        android:layout_width="116dp"
-        android:layout_height="111dp"
-        android:background="@drawable/roundstyle_layout"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scan"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_toRightOf="@+id/recharge"
+        android:layout_below="@+id/pts"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/input_background2"
+        android:layout_marginTop="50dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/cashoutlogo"></ImageView>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/scanqr"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="Send"
-            android:textColor="@color/white"
-            android:textSize="20dp"></TextView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="116dp"
-        android:layout_height="111dp"
-        android:background="@drawable/roundstyle_layout"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topup"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="53dp"
+        android:fontFamily="@font/opensansveriable"
+        android:text="Top Up"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/bankaccountlogo"></ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recharge"
+        android:text="Recharge"
+        android:textColor="@color/white"
+        android:fontFamily="@font/opensansveriable"
+        android:textSize="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="170dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="Bank"
-            android:textColor="@color/white"
-            android:textSize="20dp"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="116dp"
-        android:layout_height="111dp"
-        android:background="@drawable/roundstyle_layout"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.696">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/billslogo_white"></ImageView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="Bills"
-            android:textColor="@color/white"
-            android:textSize="20dp"></TextView>
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan"
+        android:text="Scan QR"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="290dp"/>
 
     <ViewFlipper
         android:layout_width="228dp"
         android:layout_height="322dp"
+        android:layout_below="@+id/recharge"
+        android:layout_marginTop="60dp"
+        android:layout_centerInParent="true"
         android:autoStart="true"
         android:flipInterval="2000"
         android:inAnimation="@android:anim/slide_in_left"
-        android:outAnimation="@android:anim/slide_out_right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513">
-
+        android:outAnimation="@android:anim/slide_out_right">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView4"
@@ -247,6 +201,8 @@
             android:adjustViewBounds="true"
             android:src="@drawable/vertbanner_five"
             app:shapeAppearanceOverlay="@style/roundedimageview" />
+
     </ViewFlipper>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
