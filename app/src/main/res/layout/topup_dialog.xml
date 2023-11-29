@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/input_background2"
+    android:padding="16dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Foodie Points"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:id="@+id/first_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/input_background"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/first_pts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensansveriable"
+            android:paddingStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="50 pts"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/first_pts"
+            android:src="@drawable/recharge"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/second_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/first_selector"
+        android:background="@drawable/input_background"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/second_pts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensansveriable"
+            android:paddingStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="100 pts"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/second_pts"
+            android:src="@drawable/recharge"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/third_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/input_background"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/third_pts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/opensansveriable"
+            android:paddingStart="10dp"
+            android:text="500 pts"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/third_pts"
+            android:src="@drawable/recharge"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fourth_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/third_selector"
+        android:background="@drawable/input_background"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/fourth_pts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/opensansveriable"
+            android:paddingStart="10dp"
+            android:text="1000 pts"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fourth_pts"
+            android:src="@drawable/recharge"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
