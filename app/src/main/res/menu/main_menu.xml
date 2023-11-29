@@ -30,6 +30,10 @@
             <item android:id="@+id/History"
                 android:icon="@drawable/historylogo"
                 android:title="History"/>
+
+            <item android:id="@+id/Logout"
+                android:icon="@drawable/logout_logo"
+                android:title="Logout"/>
         </menu>
     </item>
 </group>
