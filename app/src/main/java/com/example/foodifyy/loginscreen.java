@@ -45,6 +45,9 @@ public class loginscreen extends AppCompatActivity {
         emailfield = findViewById(R.id.email_field);
         passwordfield = findViewById(R.id.password_field);
 
+        
+        checkLoginStatus();
+        
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,5 +106,22 @@ public class loginscreen extends AppCompatActivity {
 
 
 
+    }
+
+    private void checkLoginStatus() {
+        FirebaseUser user = auth.getCurrentUser();
+
+        if  (user != null) {
+            if (user.getMetadata().getCreationTimestamp() == user.getMetadata().getLastSignInTimestamp()) {
+                Toast.makeText(loginscreen.this, "New user, going to Dashboard", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent (loginscreen.this, mainscreen.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent (loginscreen.this, mainscreen.class);
+                startActivity(intent);
+            }
+            finish();
+        }
     }
 }
