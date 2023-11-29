@@ -29,6 +29,13 @@
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/menu" />
 
+            <ImageView
+                android:id="@+id/logout"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="320dp"
+                android:src="@drawable/logout" />
+
 
         </LinearLayout>
 

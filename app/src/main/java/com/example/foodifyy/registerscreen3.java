@@ -67,6 +67,9 @@ public class registerscreen3 extends AppCompatActivity {
                 databaseReference.child(userID).child("barangay,city").setValue(barangaycity);
                 databaseReference.child(userID).child("housenumber").setValue(housenumber);
                 databaseReference.child(userID).child("phonenumber").setValue(phoneno);
+
+                FirebaseAuth.getInstance().signOut();
+
             }
         });
     }

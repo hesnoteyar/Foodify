@@ -10,17 +10,20 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class mainscreen extends AppCompatActivity {
+    ImageView Logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +44,17 @@ public class mainscreen extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-           @Override
-           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-               int itemId = item.getItemId();
+        Logout = findViewById(R.id.logout);
 
-               if (itemId == R.id.Logout) {
-                   showLogOutConfirmationDialog();
-               }
-                drawerLayout.closeDrawer(GravityCompat.START);
-               return true;
-           }
-       });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogOutConfirmationDialog();
+            }
+        });
+
     }
+
 
     private void showLogOutConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
