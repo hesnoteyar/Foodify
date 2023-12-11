@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**0
@@ -90,6 +91,7 @@ public class BankFragment extends Fragment {
         FirebaseUser currentUser = auth.getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("points");
         DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference transactionHistoryReference = FirebaseDatabase.getInstance().getReference("transaction_history");
 
         databaseReference.child("topUp1").setValue("50");
         databaseReference.child("topUp2").setValue("100");
@@ -172,6 +174,7 @@ public class BankFragment extends Fragment {
     private void handleTopUp(String topUpKey) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("points");
         DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference transactionHistoryReference = FirebaseDatabase.getInstance().getReference("transaction_history");
         FirebaseUser currentUser = auth.getCurrentUser();
 
         // Retrieve the top-up points from the points table
@@ -189,13 +192,36 @@ public class BankFragment extends Fragment {
 
                         // Update the user's points in the users table
                         userReference.child(currentUser.getUid()).child("points").setValue(newPoints);
+
+                        // Save the transaction in the transaction history
+                        saveTransactionToHistory(currentUser.getUid(), topUpPoints);
                     } else {
                         // If the user's points node does not exist, initialize it with the top-up points
                         userReference.child(currentUser.getUid()).child("points").setValue(topUpPoints);
+
+                        // Save the transaction in the transaction history
+                        saveTransactionToHistory(currentUser.getUid(), topUpPoints);
                     }
                 });
             }
         });
+    }
+
+    private void saveTransactionToHistory(String userId, int topUpPoints) {
+        DatabaseReference transactionHistoryReference = FirebaseDatabase.getInstance().getReference("transaction_history");
+
+        // Create a unique key for the transaction
+        String transactionKey = transactionHistoryReference.push().getKey();
+
+        // Build the transaction object
+        Transaction transaction = new Transaction(userId, "TopUp", topUpPoints);
+        transaction.setTransactionKey(transactionKey); // Set the transactionKey
+
+        // Set the transaction date
+        transaction.setTransactionDate(new Date());
+
+        // Save the transaction in the transaction history node
+        transactionHistoryReference.child(userId).child(transactionKey).setValue(transaction);
     }
 
     private void retrievePoints() {

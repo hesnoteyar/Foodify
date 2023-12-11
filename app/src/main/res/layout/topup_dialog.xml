@@ -17,7 +17,7 @@
 
     <RelativeLayout
         android:id="@+id/first_selector"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:background="@drawable/input_background"
@@ -36,7 +36,7 @@
             android:textSize="20dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/first_pts"
             android:src="@drawable/recharge"/>
@@ -45,7 +45,7 @@
 
     <RelativeLayout
         android:id="@+id/second_selector"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_below="@+id/first_selector"
@@ -65,7 +65,7 @@
             android:textSize="20dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/second_pts"
             android:src="@drawable/recharge"/>
@@ -74,7 +74,7 @@
 
     <RelativeLayout
         android:id="@+id/third_selector"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="30dp"
         android:background="@drawable/input_background"
@@ -93,7 +93,7 @@
             android:textSize="20dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/third_pts"
             android:src="@drawable/recharge"/>
@@ -102,7 +102,7 @@
 
     <RelativeLayout
         android:id="@+id/fourth_selector"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="30dp"
         android:layout_below="@id/third_selector"
@@ -122,7 +122,7 @@
             android:textSize="20dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/fourth_pts"
             android:src="@drawable/recharge"/>
