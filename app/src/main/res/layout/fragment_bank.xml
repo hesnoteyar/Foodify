@@ -89,7 +89,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/recharge_logo"
+            android:src="@drawable/generate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/scanqr"
+            android:src="@drawable/scan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,12 +134,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/recharge"
-        android:text="Recharge"
+        android:text="Generate QR"
         android:textColor="@color/white"
         android:fontFamily="@font/opensansveriable"
         android:textSize="17dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="170dp"/>
+        android:layout_marginLeft="155dp"/>
 
     <TextView
         android:layout_width="wrap_content"

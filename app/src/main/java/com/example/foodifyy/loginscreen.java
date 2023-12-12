@@ -32,7 +32,7 @@ public class loginscreen extends AppCompatActivity {
 
     Button login;
     EditText emailfield, passwordfield;
-    TextView newacc;
+    TextView newacc, forgotpassword;
     Handler h = new Handler();
 
     @Override
@@ -44,9 +44,22 @@ public class loginscreen extends AppCompatActivity {
         newacc = findViewById(R.id.newacc_btn);
         emailfield = findViewById(R.id.email_field);
         passwordfield = findViewById(R.id.password_field);
-
+        forgotpassword = findViewById(R.id.forgotpass);
         
         checkLoginStatus();
+
+        forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(loginscreen.this, ForgotPassword.class);
+                        startActivity(i);
+                    }
+                }, 0);
+            }
+        });
         
         login.setOnClickListener(new View.OnClickListener() {
             @Override
