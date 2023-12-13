@@ -23,79 +23,111 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:fontFamily="@font/opensansveriable"
-        android:layout_marginTop="20dp"
-        android:textSize="24dp" />
+        android:layout_marginTop="30dp"
+        android:textSize="30dp" />
 
     <TextView
-        android:id="@+id/item"
+        android:id="@id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#808080"
-        android:textSize="17dp"
-        android:layout_below="@+id/burger"
-        android:text="Item"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="17dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="155dp"
-        android:layout_below="@+id/burger"
+        android:layout_below="@id/burger"
+        android:layout_centerHorizontal="true"
         android:text="Quantity"
-        android:fontFamily="@font/opensansveriable"
-        android:layout_marginTop="15dp"
-        android:textColor="#808080"/>
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"/>
 
-    <TextView
-
+    <RelativeLayout
+        android:id="@+id/quantity_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="255dp"
-        android:layout_below="@+id/burger"
-        android:text="Calories per Serving"
-        android:fontFamily="@font/opensansveriable"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:textColor="#808080"/>
+        android:background="#1C1B1B"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:background="@drawable/roundstyle_field"
+            android:id="@+id/btnMinus"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="#57B65F"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_marginRight="10dp"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btnMinus"
+            android:fontFamily="@font/opensansveriable"
+            android:text="1"
+            android:layout_centerVertical="true"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:background="@drawable/roundstyle_field"
+            android:id="@+id/btnAdd"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tvQuantity"
+            android:textSize="25dp"
+            android:backgroundTint="#57B65F"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:text="+"/>
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/rice"
+        android:id="@+id/display_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_below="@id/quantity_btn"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/opensansveriable"
-        android:layout_below="@+id/item"
-        android:layout_marginLeft="53dp"
-        android:text="Rice"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"
+        android:text="null"/>
+
+    <Button
+        android:id="@+id/addtocart"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Add To Cart"
+        android:layout_below="@+id/display_price"
+        android:fontFamily="@font/opensansveriable"
+        android:backgroundTint="#57B65F"
+        android:background="@drawable/roundstyle_field"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:layout_marginTop="30dp"/>
 
-    <TextView
-        android:id="@+id/patty"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buynow"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:text="Buy"
         android:fontFamily="@font/opensansveriable"
-        android:layout_below="@+id/item"
-        android:layout_marginLeft="40dp"
-        android:text="Extra Patty"
+        android:layout_below="@+id/addtocart"
+        android:backgroundTint="#57B65F"
+        android:background="@drawable/roundstyle_field"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:layout_marginTop="75dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/eggs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/opensansveriable"
-        android:layout_below="@+id/item"
-        android:layout_marginLeft="50dp"
-        android:text="Gravy"
-        android:textColor="@color/white"
-        android:layout_marginTop="125dp"/>
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/backbutton"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        />
 
 
 </RelativeLayout>

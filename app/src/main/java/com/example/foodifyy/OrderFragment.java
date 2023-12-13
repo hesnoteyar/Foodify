@@ -1,9 +1,12 @@
 package com.example.foodifyy;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +38,9 @@ public class OrderFragment extends Fragment {
     ImageView menu1, menu2, menu3, menu4, menu5;
     DatabaseReference databaseReference;
     DatabaseReference foodDatabaseReference;
+    Handler h = new Handler();
+    private Context context;
+
 
     public OrderFragment() {
         // Required empty public constructor
@@ -74,17 +80,48 @@ public class OrderFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_order, container, false);
 
         greeting = v.findViewById(R.id.greetings1);
+        menu1 = v.findViewById(R.id.Menu1);
+        menu2 = v.findViewById(R.id.Menu2);
+        menu3 = v.findViewById(R.id.Menu3);
+        menu4 = v.findViewById(R.id.Menu4);
+        menu5 = v.findViewById(R.id.Menu5);
 
+        context = getContext();
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
-
+        foodDatabaseReference = FirebaseDatabase.getInstance().getReference("food");
 
         displayGreetings();
+
+        addFoodItem("Burger Steak", "FOOD001", 45);
+        addFoodItem("Siomai", "FOOD002", 30);
+        addFoodItem("Sisig", "FOOD003", 65);
+        addFoodItem("Shawarma Rice", "FOOD004", 89);
+        addFoodItem("Pinakbet", "FOOD005", 55);
+
+        menu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(context, BurgerSteak.class);
+                        startActivity(i);
+                    }
+                }, 0);
+            }
+        });
+
+
         return v;
     }
 
-
+    private void addFoodItem(String foodName, String foodID, int foodPrice) {
+        foodDatabaseReference.child(foodID).child("foodID").setValue(foodID);
+        foodDatabaseReference.child(foodID).child("foodName").setValue(foodName);
+        foodDatabaseReference.child(foodID).child("foodPrice").setValue(foodPrice);
+    }
 
 
     private void displayGreetings() {
