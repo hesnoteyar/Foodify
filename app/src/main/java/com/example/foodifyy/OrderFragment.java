@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,9 @@ public class OrderFragment extends Fragment {
     private String mParam2;
     TextView greeting;
     FirebaseAuth auth;
+    ImageView menu1, menu2, menu3, menu4, menu5;
     DatabaseReference databaseReference;
+    DatabaseReference foodDatabaseReference;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -76,10 +79,13 @@ public class OrderFragment extends Fragment {
         FirebaseUser currentUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
 
-        displayGreetings();
 
+        displayGreetings();
         return v;
     }
+
+
+
 
     private void displayGreetings() {
         databaseReference.get().addOnSuccessListener(documentSnapshot -> {
