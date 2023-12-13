@@ -126,7 +126,7 @@
             android:background="@drawable/roundstyle_field"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="20dp"/>
 
 
     </RelativeLayout>
