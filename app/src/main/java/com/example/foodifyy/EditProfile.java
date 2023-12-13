@@ -30,7 +30,7 @@ public class EditProfile extends AppCompatActivity {
     DatabaseReference databaseReference;
     StorageReference storageReference;
     Uri imageUri;
-    EditText emailEdit, unameEdit, contactEdit, fnameEdit, mnameEdit, lnameEdit, houseEdit, barangayEdit, regionEdit;
+    EditText emailEdit, unameEdit, contactEdit, fnameEdit, mnameEdit, lnameEdit, houseEdit, barangayEdit, regionEdit, ageEdit, weightEdit, heightEdit;
     TextView save;
 
     @Override
@@ -54,6 +54,9 @@ public class EditProfile extends AppCompatActivity {
         houseEdit = findViewById(R.id.edit_house);
         barangayEdit = findViewById(R.id.edit_barangay);
         regionEdit = findViewById(R.id.edit_region);
+        ageEdit = findViewById(R.id.edit_age);
+        weightEdit = findViewById(R.id.edit_weight);
+        heightEdit = findViewById(R.id.edit_height);
 
         save = findViewById(R.id.save_profile);
 
@@ -73,8 +76,11 @@ public class EditProfile extends AppCompatActivity {
                 String EThouse = houseEdit.getText().toString();
                 String ETbarangay = barangayEdit.getText().toString();
                 String ETregion = regionEdit.getText().toString();
+                String ETage = ageEdit.getText().toString();
+                String ETweight = weightEdit.getText().toString();
+                String ETheight = heightEdit.getText().toString();
 
-                saveUserDataToFirebase(ETemail, ETuname, ETcontact, ETfname, ETmname, ETlname, EThouse, ETbarangay, ETregion);
+                saveUserDataToFirebase(ETemail, ETuname, ETcontact, ETfname, ETmname, ETlname, EThouse, ETbarangay, ETregion, ETage, ETweight, ETheight);
                 Toast.makeText(EditProfile.this, "Updated Successfuly", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), mainscreen.class));
 
@@ -127,7 +133,7 @@ public class EditProfile extends AppCompatActivity {
         }
     }
 
-    private void saveUserDataToFirebase(String ETemail, String ETuname, String ETcontact, String ETfname, String ETmname, String ETlname, String EThouse, String ETbarangay, String ETregion) {
+    private void saveUserDataToFirebase(String ETemail, String ETuname, String ETcontact, String ETfname, String ETmname, String ETlname, String EThouse, String ETbarangay, String ETregion, String ETage, String ETweight, String ETheight) {
        FirebaseUser firebaseUser = auth.getCurrentUser();
        String userID = firebaseUser.getUid();
 
@@ -141,6 +147,9 @@ public class EditProfile extends AppCompatActivity {
         databaseReference1.child(userID).child("housenumber").setValue(EThouse);
         databaseReference1.child(userID).child("barangay,city").setValue(ETbarangay);
         databaseReference1.child(userID).child("region,province").setValue(ETregion);
+        databaseReference1.child(userID).child("age").setValue(ETage);
+        databaseReference1.child(userID).child("weight").setValue(ETweight);
+        databaseReference1.child(userID).child("height").setValue(ETheight);
     }
 
 
@@ -156,6 +165,9 @@ public class EditProfile extends AppCompatActivity {
                 String house_no = documentSnapshot.child("housenumber").getValue(String.class);
                 String barangay_city = documentSnapshot.child("barangay,city").getValue(String.class);
                 String region_province = documentSnapshot.child("region,province").getValue(String.class);
+                String Age = documentSnapshot.child("age").getValue(String.class);
+                String Weight = documentSnapshot.child("weight").getValue(String.class);
+                String Height = documentSnapshot.child("height").getValue(String.class);
 
                 emailEdit.setText(email);
                 fnameEdit.setText(firstname);
@@ -166,6 +178,9 @@ public class EditProfile extends AppCompatActivity {
                 houseEdit.setText(house_no);
                 barangayEdit.setText(barangay_city);
                 regionEdit.setText(region_province);
+                ageEdit.setText(Age);
+                weightEdit.setText(Weight);
+                heightEdit.setText(Height);
 
                 String imageUrl = documentSnapshot.child("profileImage").getValue(String.class);
 

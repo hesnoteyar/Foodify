@@ -8,9 +8,94 @@
     tools:context=".BurgerSteak">
 
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
+        android:id="@+id/burgerbanner"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:src="@drawable/burgersteak_banner"/>
+        android:layout_height="414dp"
+        android:src="@drawable/burgersteak_banner" />
+
+    <TextView
+        android:id="@+id/burger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/burgerbanner"
+        android:text="Burger Steak"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_marginTop="20dp"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#808080"
+        android:textSize="17dp"
+        android:layout_below="@+id/burger"
+        android:text="Item"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="155dp"
+        android:layout_below="@+id/burger"
+        android:text="Quantity"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_marginTop="15dp"
+        android:textColor="#808080"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="255dp"
+        android:layout_below="@+id/burger"
+        android:text="Calories per Serving"
+        android:fontFamily="@font/opensansveriable"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:textColor="#808080"/>
+
+    <TextView
+        android:id="@+id/rice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_below="@+id/item"
+        android:layout_marginLeft="53dp"
+        android:text="Rice"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/patty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_below="@+id/item"
+        android:layout_marginLeft="40dp"
+        android:text="Extra Patty"
+        android:textColor="@color/white"
+        android:layout_marginTop="75dp"/>
+
+    <TextView
+        android:id="@+id/eggs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_below="@+id/item"
+        android:layout_marginLeft="50dp"
+        android:text="Gravy"
+        android:textColor="@color/white"
+        android:layout_marginTop="125dp"/>
+
 
 </RelativeLayout>

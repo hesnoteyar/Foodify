@@ -30,11 +30,19 @@
                 android:src="@drawable/menu" />
 
             <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="270dp"
+                android:src="@drawable/cart" />
+
+            <ImageView
                 android:id="@+id/logout"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginLeft="320dp"
+                android:layout_marginLeft="10dp"
                 android:src="@drawable/logout" />
+
+
 
 
         </LinearLayout>

@@ -51,7 +51,7 @@ public class registerscreen3 extends AppCompatActivity {
                 } else {
                     saveLocationToFirebase(postalcode, regionprovince, barangaycity, housenumber, phoneno);
                     Toast.makeText(registerscreen3.this, "Info saved", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), loginscreen.class));
+                    startActivity(new Intent(getApplicationContext(), registerscreen4.class));
                 }
 
 
@@ -67,9 +67,6 @@ public class registerscreen3 extends AppCompatActivity {
                 databaseReference.child(userID).child("barangay,city").setValue(barangaycity);
                 databaseReference.child(userID).child("housenumber").setValue(housenumber);
                 databaseReference.child(userID).child("phonenumber").setValue(phoneno);
-
-                FirebaseAuth.getInstance().signOut();
-
             }
         });
     }

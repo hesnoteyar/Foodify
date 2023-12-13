@@ -179,6 +179,81 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Age"
+                android:layout_marginLeft="20dp"
+                android:textColor="#808080"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="20dp"
+                />
+            <EditText
+                android:id="@+id/edit_age"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/input_background2"
+                android:layout_marginRight="20dp"
+                android:text="null"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                android:layout_marginLeft="20dp"
+                android:textColor="#808080"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="20dp"
+                />
+            <EditText
+                android:id="@+id/edit_weight"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/input_background2"
+                android:layout_marginRight="20dp"
+                android:text="null"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height"
+                android:layout_marginLeft="20dp"
+                android:textColor="#808080"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="20dp"
+                />
+            <EditText
+                android:id="@+id/edit_height"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/input_background2"
+                android:layout_marginRight="20dp"
+                android:text="null"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:fontFamily="@font/opensansveriable"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Contact No."
                 android:layout_marginLeft="20dp"
                 android:textColor="#808080"

@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
     private View view;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
-    TextView emailEditText, unameEditText, contactEditText, fnameEditText, mnameEditText, lnameEditText, addressEditText, edit;
+    TextView emailEditText, unameEditText, contactEditText, fnameEditText, mnameEditText, lnameEditText, addressEditText, ageEditText, weightEditText, heightEditText, edit;
     ImageView pfp;
 
 
@@ -92,6 +92,9 @@ public class ProfileFragment extends Fragment {
          contactEditText = view.findViewById(R.id.display_number);
          mnameEditText = view.findViewById(R.id.display_mname);
          addressEditText = view.findViewById(R.id.display_address);
+         ageEditText = view.findViewById(R.id.display_age);
+         weightEditText = view.findViewById(R.id.display_weight);
+         heightEditText = view.findViewById(R.id.display_height);
          edit = view.findViewById(R.id.edit_profile);
          pfp = view.findViewById(R.id.profile);
 
@@ -123,6 +126,9 @@ public class ProfileFragment extends Fragment {
                 String house_no = documentSnapshot.child("housenumber").getValue(String.class);
                 String barangay_city = documentSnapshot.child("barangay,city").getValue(String.class);
                 String region_province = documentSnapshot.child("region,province").getValue(String.class);
+                String age = documentSnapshot.child("age").getValue(String.class);
+                String weight = documentSnapshot.child("weight").getValue(String.class);
+                String height = documentSnapshot.child("height").getValue(String.class);
 
                 emailEditText.setText(email);
                 fnameEditText.setText(firstname);
@@ -131,6 +137,9 @@ public class ProfileFragment extends Fragment {
                 mnameEditText.setText(middlename);
                 contactEditText.setText(phone);
                 addressEditText.setText(house_no + ", " + barangay_city + ", " + region_province);
+                ageEditText.setText(age);
+                weightEditText.setText(weight + " kg");
+                heightEditText.setText(height + " cm");
 
                 String imageUrl = documentSnapshot.child("profileImage").getValue(String.class);
 
