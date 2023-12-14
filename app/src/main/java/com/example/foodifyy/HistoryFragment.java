@@ -13,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -49,6 +51,8 @@ public class HistoryFragment extends Fragment {
     private ListView historyListView;
     private List<String> transactionList;
     private ArrayAdapter<String> adapter;
+    private TextView noTransactionTV;
+    private ImageView noTransactionIV;
 
 
     public HistoryFragment() {
@@ -89,6 +93,8 @@ public class HistoryFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_history, container, false);
 
         historyListView = v.findViewById(R.id.historyListView);
+        noTransactionIV = v.findViewById(R.id.nohistoryImageView);
+        noTransactionTV = v.findViewById(R.id.nohistoryTextView);
         transactionList = new ArrayList<>();
         adapter = new ArrayAdapter<>(requireContext(), R.layout.list_item_history, R.id.textViewHistory, transactionList);
         historyListView.setAdapter(adapter);
@@ -123,6 +129,8 @@ public class HistoryFragment extends Fragment {
                         }
                     }
 
+                    updateNoTransactionViewsVisibility();
+
                     adapter.notifyDataSetChanged();
                 }
 
@@ -131,6 +139,16 @@ public class HistoryFragment extends Fragment {
 
                 }
             });
+        }
+    }
+
+    private void updateNoTransactionViewsVisibility() {
+        if (transactionList.isEmpty()) {
+            noTransactionTV.setVisibility(View.VISIBLE);
+            noTransactionIV.setVisibility(View.VISIBLE);
+        } else {
+            noTransactionTV.setVisibility(View.GONE);
+            noTransactionIV.setVisibility(View.GONE);
         }
     }
 }

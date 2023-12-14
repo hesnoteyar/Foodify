@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Foodifyy"
         tools:targetApi="31">
         <activity
+            android:name=".Siomai"
+            android:exported="false" />
+        <activity
             android:name=".registerscreen5"
             android:exported="false" />
         <activity
