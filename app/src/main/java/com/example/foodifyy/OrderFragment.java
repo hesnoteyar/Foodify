@@ -113,6 +113,58 @@ public class OrderFragment extends Fragment {
             }
         });
 
+        menu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(context, Siomai.class);
+                        startActivity(i);
+                    }
+                }, 0);
+            }
+        });
+
+        menu3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(context, Sisig.class);
+                        startActivity(i);
+                    }
+                }, 0);
+            }
+        });
+
+        menu4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(context, ShawarmaRice.class);
+                        startActivity(i);
+                    }
+                }, 0);
+            }
+        });
+
+        menu5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(context, Pinakbet.class);
+                        startActivity(i);
+                    }
+                }, 0);
+            }
+        });
+
 
         return v;
     }
