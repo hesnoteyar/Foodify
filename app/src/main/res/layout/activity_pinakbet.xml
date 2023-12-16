@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:id="@+id/burger"
+            android:id="@+id/displayMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pinakbet"
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#808080"
-            android:layout_below="@id/burger"
+            android:layout_below="@id/displayMenu"
             android:layout_centerHorizontal="true"
             android:text="Quantity"
             android:textSize="18dp"
