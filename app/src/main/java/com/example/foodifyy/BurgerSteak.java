@@ -11,12 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 public class BurgerSteak extends AppCompatActivity {
@@ -26,10 +29,12 @@ public class BurgerSteak extends AppCompatActivity {
     Handler h = new Handler();
     ImageView backbtn;
     TextView Menudisplay, Pricedisplay, Quantity;
-    Button btnAdd, btnMinus;
+    Button btnAdd, btnMinus, addtocart;
 
     private int quantity = 1;
     private double itemPrice;
+
+    private ArrayList<CartItem> cartItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +47,12 @@ public class BurgerSteak extends AppCompatActivity {
         Quantity = findViewById(R.id.tvQuantity);
         btnAdd = findViewById(R.id.btnAdd);
         btnMinus = findViewById(R.id.btnMinus);
+        addtocart = findViewById(R.id.addtocart);
         databaseReference = FirebaseDatabase.getInstance().getReference("food").child("FOOD001");
 
         retrieveMenuInfo();
+
+
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,5 +152,17 @@ public class BurgerSteak extends AppCompatActivity {
 
         // Display the total amount in the TextView
         Pricedisplay.setText(String.format("₱ %.2f", totalAmount));
+
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CartItem cartItem = new CartItem(Menudisplay.getText().toString(), quantity, totalAmount);
+                cartItems.add(cartItem);
+
+                Toast.makeText(BurgerSteak.this, "Item added to cart", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }
