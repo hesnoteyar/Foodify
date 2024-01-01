@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1B1B"
+    tools:context=".Receipt">
+
+    <TextView
+        android:id="@+id/receipt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Receipt"
+        android:textColor="@color/white"
+        android:fontFamily="@font/opensansveriable"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/greeting2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello User,"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:layout_below="@+id/receipt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/greeting3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your order has been confirmed!"
+        android:textColor="#808080"
+        android:textSize="17dp"
+        android:layout_below="@+id/greeting2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <ListView
+        android:id="@+id/ListviewItem"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_height="400dp"
+        android:layout_below="@+id/greeting3"/>
+
+    <TextView
+        android:id="@+id/totaltxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: "
+        android:layout_below="@+id/ListviewItem"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/totalamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="null"
+        android:layout_below="@+id/ListviewItem"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

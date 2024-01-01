@@ -80,7 +80,13 @@ public class Cart extends AppCompatActivity {
             
         }
 
-
+        Checkoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int totalAmount = calculateTotalAmount();
+                startActivity(new Intent(Cart.this, PayMethod.class));
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener()
         {
@@ -97,6 +103,15 @@ public class Cart extends AppCompatActivity {
         });
 
 
+    }
+
+    private int calculateTotalAmount() {
+        int totalAmount = 0;
+        for (CartItem cartItem : cartItems) {
+            totalAmount += cartItem.getAmount() * cartItem.getQuantity();
+        }
+
+        return totalAmount;
     }
 
     private void updateVisibility() {
