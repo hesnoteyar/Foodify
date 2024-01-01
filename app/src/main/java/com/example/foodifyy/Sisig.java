@@ -6,26 +6,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Sisig extends AppCompatActivity {
 
     Handler h = new Handler();
     ImageView backbtn;
     TextView Menudisplay, Pricedisplay, Quantity;
-    Button btnAdd, btnMinus;
+    Button btnAdd, btnMinus, addtocart;
     DatabaseReference databaseReference;
+    DatabaseReference cartReference;
+    FirebaseAuth auth;
+
     private int quantity = 1;
     private double itemPrice;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +44,24 @@ public class Sisig extends AppCompatActivity {
         backbtn = findViewById(R.id.backbutton);
         Menudisplay = findViewById(R.id.displayMenu);
         Pricedisplay = findViewById(R.id.display_price);
+        addtocart = findViewById(R.id.addtocart);
         Quantity = findViewById(R.id.tvQuantity);
         btnAdd = findViewById(R.id.btnAdd);
         btnMinus = findViewById(R.id.btnMinus);
         databaseReference = FirebaseDatabase.getInstance().getReference("food").child("FOOD003");
+        auth = FirebaseAuth.getInstance();
 
         retrieveMenuInfo();
+        String userId = auth.getCurrentUser().getUid();
+        cartReference = FirebaseDatabase.getInstance().getReference("cart").child(userId);
 
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                addToCart();
+            }
+        });
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +93,21 @@ public class Sisig extends AppCompatActivity {
 
         addValueEventListener();
 
+    }
+
+    private void addToCart() {
+        if (auth.getCurrentUser() != null) {
+            int currentQuantity = quantity;
+            double currentAmount = currentQuantity * itemPrice;
+            String foodName = Menudisplay.getText().toString();
+
+            CartItem cartItem = new CartItem(foodName, currentQuantity, currentAmount);
+
+            String cartItemId = cartReference.push().getKey();
+            cartReference.child(cartItemId).setValue(cartItem);
+
+            Toast.makeText(Sisig.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void addValueEventListener() {
@@ -142,5 +177,7 @@ public class Sisig extends AppCompatActivity {
 
         // Display the total amount in the TextView
         Pricedisplay.setText(String.format("₱ %.2f", totalAmount));
+
+
     }
 }

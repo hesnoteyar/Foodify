@@ -1,27 +1,30 @@
 package com.example.foodifyy;
 
 public class CartItem {
-    private String itemName;
+    private String foodName;
     private int quantity;
-    private double totalAmount;
+    private double amount;
 
-    public CartItem(String itemName, int quantity, double totalAmount) {
-        this.itemName = itemName;
-        this.quantity = quantity;
-        this.totalAmount = totalAmount;
+    // Required default constructor for Firebase
+    public CartItem() {
     }
 
-    // Implement getter methods for itemName, quantity, and totalAmount
-    public String getItemName() {
-        return itemName;
+    public CartItem(String foodName, int quantity, double amount) {
+        this.foodName = foodName;
+        this.quantity = quantity;
+        this.amount = amount;
+    }
+
+    public String getFoodName() {
+        return foodName;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public double getTotalAmount() {
-        return totalAmount;
+    public double getAmount() {
+        return amount;
     }
 }
 

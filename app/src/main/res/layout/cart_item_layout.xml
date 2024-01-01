@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- cart_item_layout.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -6,27 +6,24 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/itemName"
+        android:id="@+id/foodNameTextView"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/opensansveriable" />
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/itemQuantity"
+        android:id="@+id/quantityTextView"
         android:layout_width="wrap_content"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#808080"
-        android:fontFamily="@font/opensansveriable" />
+        android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/itemTotalAmount"
+        android:id="@+id/amountTextView"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/opensansveriable" />
-
+        android:textSize="16sp"/>
 </LinearLayout>

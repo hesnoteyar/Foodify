@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +27,8 @@ import java.util.ArrayList;
 public class BurgerSteak extends AppCompatActivity {
 
     DatabaseReference databaseReference;
-
+    DatabaseReference cartReference;
+    FirebaseAuth auth;
     Handler h = new Handler();
     ImageView backbtn;
     TextView Menudisplay, Pricedisplay, Quantity;
@@ -34,13 +37,10 @@ public class BurgerSteak extends AppCompatActivity {
     private int quantity = 1;
     private double itemPrice;
 
-    private ArrayList<CartItem> cartItems = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_burger_steak);
-
         backbtn = findViewById(R.id.backbutton);
         Menudisplay = findViewById(R.id.displayMenu);
         Pricedisplay = findViewById(R.id.display_price);
@@ -48,11 +48,23 @@ public class BurgerSteak extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         btnMinus = findViewById(R.id.btnMinus);
         addtocart = findViewById(R.id.addtocart);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("food").child("FOOD001");
+        auth = FirebaseAuth.getInstance();
+
+
+        String userId = auth.getCurrentUser().getUid();
+        cartReference = FirebaseDatabase.getInstance().getReference("cart").child(userId);
 
         retrieveMenuInfo();
 
 
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToCart();
+            }
+        });
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +95,21 @@ public class BurgerSteak extends AppCompatActivity {
 
         addValueEventListener();
 
+    }
+
+    private void addToCart() {
+        if (auth.getCurrentUser() != null) {
+            int currentQuantity = quantity;
+            double currentAmount = currentQuantity * itemPrice;
+            String foodName = Menudisplay.getText().toString();
+
+            CartItem cartItem = new CartItem(foodName, currentQuantity, currentAmount);
+
+            String cartItemId = cartReference.push().getKey();
+            cartReference.child(cartItemId).setValue(cartItem);
+
+            Toast.makeText(BurgerSteak.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void addValueEventListener() {
@@ -153,15 +180,7 @@ public class BurgerSteak extends AppCompatActivity {
         // Display the total amount in the TextView
         Pricedisplay.setText(String.format("₱ %.2f", totalAmount));
 
-        addtocart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CartItem cartItem = new CartItem(Menudisplay.getText().toString(), quantity, totalAmount);
-                cartItems.add(cartItem);
 
-                Toast.makeText(BurgerSteak.this, "Item added to cart", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
     }

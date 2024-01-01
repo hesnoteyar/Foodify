@@ -64,20 +64,21 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="Check Out"
-        android:layout_below="@+id/imagetext2"
+        android:layout_below="@+id/cart"
         android:fontFamily="@font/opensansveriable"
         android:backgroundTint="#57B65F"
         android:background="@drawable/roundstyle_field"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:layout_marginTop="70dp"/>
+        android:layout_marginTop="570dp"/>
 
     <ListView
         android:id="@+id/cartListView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cart"
-        android:layout_above="@id/checkout"/>
+        android:divider="#57B65F"
+        android:dividerHeight="1dp"/>
 
 
 
