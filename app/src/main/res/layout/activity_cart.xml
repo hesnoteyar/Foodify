@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1B1B"
+    tools:context=".Cart">
+
+    <TextView
+        android:id="@+id/cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Cart"
+        android:textColor="@color/white"
+        android:fontFamily="@font/opensansveriable"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"/>
+
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/backbutton"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/emptyimage"
+        android:layout_width="213dp"
+        android:layout_height="254dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/noitem"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/imagetext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empty"
+        android:textColor="@color/white"
+        android:layout_below="@id/emptyimage"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:fontFamily="@font/opensansveriable"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/imagetext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You don't have any foods in the cart this time"
+        android:textColor="#808080"
+        android:fontFamily="@font/opensansveriable"
+        android:layout_below="@id/imagetext1"
+        android:layout_centerHorizontal="true"
+        android:textSize="13dp"/>
+
+    <Button
+        android:id="@+id/addtocart"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Check Out"
+        android:layout_below="@+id/imagetext2"
+        android:fontFamily="@font/opensansveriable"
+        android:backgroundTint="#57B65F"
+        android:background="@drawable/roundstyle_field"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="70dp"/>
+
+
+
+</RelativeLayout>

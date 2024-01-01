@@ -15,6 +15,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -31,7 +32,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 
 public class mainscreen extends AppCompatActivity {
-    ImageView Logout;
+    ImageView Logout, Cart;
+    Handler h = new Handler();
     private FloatingActionButton voiceActivationButton;
     private SpeechRecognizer speechRecognizer;
 
@@ -56,11 +58,25 @@ public class mainscreen extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         Logout = findViewById(R.id.logout);
+        Cart = findViewById(R.id.addtocart);
 
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showLogOutConfirmationDialog();
+            }
+        });
+
+        Cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                h.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(mainscreen.this, com.example.foodifyy.Cart.class);
+                        startActivity(i);
+                    }
+                });
             }
         });
 
