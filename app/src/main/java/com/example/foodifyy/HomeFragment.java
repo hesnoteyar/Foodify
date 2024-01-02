@@ -8,10 +8,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -43,6 +48,7 @@ public class HomeFragment extends Fragment {
     Handler h = new Handler();
     TextView greeting;
     FirebaseAuth auth;
+    EditText searchet;
     DatabaseReference databaseReference;
     private HomeFragment homeFragment;
 
@@ -95,7 +101,7 @@ public class HomeFragment extends Fragment {
         order = v.findViewById(R.id.Orderbtn);
         calendar = v.findViewById(R.id.Calendarbtn);
         greeting = v.findViewById(R.id.tv1);
-
+        searchet = v.findViewById(R.id.search);
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
@@ -103,6 +109,38 @@ public class HomeFragment extends Fragment {
         displayGreetings();
 
 
+        searchet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String searchTerm = editable.toString().trim();
+                if (searchTerm.equalsIgnoreCase("Burger Steak")) {
+                    Intent i = new Intent(getActivity(), BurgerSteak.class);
+                    startActivity(i);
+                } else if (searchTerm.equalsIgnoreCase("Siomai")) {
+                    Intent i = new Intent(getActivity(), Siomai.class);
+                    startActivity(i);
+                } else if (searchTerm.equalsIgnoreCase("Sisig")) {
+                    Intent i = new Intent(getActivity(), Sisig.class);
+                    startActivity(i);
+                } else if (searchTerm.equalsIgnoreCase("Shawarma")) {
+                    Intent i = new Intent (getActivity(), ShawarmaRice.class);
+                    startActivity(i);
+                } else if (searchTerm.equalsIgnoreCase("Pinakbet")) {
+                    Intent i = new Intent(getActivity(), Pinakbet.class);
+                    startActivity(i);
+                }
+            }
+        });
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
