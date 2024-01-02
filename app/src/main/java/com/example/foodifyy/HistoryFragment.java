@@ -124,7 +124,7 @@ public class HistoryFragment extends Fragment {
                             transaction.setTransactionKey(transactionSnapshot.getKey());
 
 
-                            String transactionInfo = "Transaction Key: " + transaction.getTransactionKey() + "\nDate: " + transaction.getFormattedTransactionDate() + "\nType: " + transaction.getType() + "\nPoints: " + transaction.getPoints();
+                            String transactionInfo = "Transaction Key: " + transaction.getTransactionKey() + "\nDate: " + transaction.getFormattedTransactionDate() + "\nType: " + transaction.getType() + "\nAmount: " + transaction.getPoints();
                             transactionList.add(transactionInfo);
                         }
                     }

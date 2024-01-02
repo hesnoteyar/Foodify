@@ -74,6 +74,7 @@
 
     <ListView
         android:id="@+id/cartListView"
+        android:padding="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cart"

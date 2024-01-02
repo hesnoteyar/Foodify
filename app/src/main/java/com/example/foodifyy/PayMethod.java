@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.example.foodifyy.Transaction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class PayMethod extends AppCompatActivity {
@@ -73,18 +74,28 @@ public class PayMethod extends AppCompatActivity {
                 int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
 
                 if (selectedRadioButtonId == R.id.Cashrdbtn) {
+                    paymentType = "Paid through Cash";
                     Intent intent = new Intent(PayMethod.this, Receipt.class);
                     intent.putExtra("totalAmount", getIntent().getIntExtra("totalAmount", 0));
                     intent.putExtra("cartItems", getIntent().getSerializableExtra("cartItems"));
                     startActivity(intent);
-                    paymentType = "Cash";
+                    handleNoPointsPayment();
                 } else if (selectedRadioButtonId == R.id.Pointsrdbtn) {
-                    paymentType = "Points";
+                    paymentType = "Paid through Points";
                     handlePointsPayment();
                 }
             }
         });
 
+    }
+
+    private void handleNoPointsPayment() {
+        int totalAmount = getIntent().getIntExtra("totalAmount", 0);
+        ArrayList<CartItem> items = cartItems; // Implement this method to retrieve your cart items
+
+        Toast.makeText(this, "Please wait for your food", Toast.LENGTH_SHORT).show();
+        saveTransactionToHistory(paymentType, totalAmount);
+        clearCartInFirebase();
     }
 
     private void handlePointsPayment() {
@@ -102,7 +113,7 @@ public class PayMethod extends AppCompatActivity {
                     int newPoints = currentPoints - totalAmount;
                     userPointsRef.setValue(newPoints);
 
-                    saveTransactionToHistory("Points", totalAmount);
+                    saveTransactionToHistory(paymentType, totalAmount);
                     clearCartInFirebase();
 
 
@@ -151,7 +162,9 @@ public class PayMethod extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = dateFormat.format(System.currentTimeMillis());
 
-        Transaction transaction = new Transaction(paymentType, formattedDate, amount);
+        Transaction transaction = new Transaction(auth.getCurrentUser().getUid(), paymentType, amount);
+        transaction.setTransactionDate(new Date());
+
 
         historyReference.push().setValue(transaction, new DatabaseReference.CompletionListener() {
             @Override
