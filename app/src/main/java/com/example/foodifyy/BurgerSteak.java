@@ -32,7 +32,7 @@ public class BurgerSteak extends AppCompatActivity {
     Handler h = new Handler();
     ImageView backbtn;
     TextView Menudisplay, Pricedisplay, Quantity;
-    Button btnAdd, btnMinus, addtocart, buynow;
+    Button btnAdd, btnMinus, addtocart;
 
     private int quantity = 1;
     private double itemPrice;
@@ -48,7 +48,6 @@ public class BurgerSteak extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         btnMinus = findViewById(R.id.btnMinus);
         addtocart = findViewById(R.id.addtocart);
-        buynow = findViewById(R.id.buynow);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("food").child("FOOD001");
         auth = FirebaseAuth.getInstance();
@@ -59,15 +58,7 @@ public class BurgerSteak extends AppCompatActivity {
 
         retrieveMenuInfo();
 
-        buynow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BurgerSteak.this, PayMethod.class);
-                intent.putExtra("totalAmount", calculateTotalAmount());
-                intent.putExtra("cartItems", getCartItems());
-                startActivity(intent);
-            }
-        });
+
 
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override

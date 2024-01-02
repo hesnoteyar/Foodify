@@ -113,19 +113,6 @@
             android:textColor="@color/white"
             android:layout_marginTop="50dp"/>
 
-        <Button
-            android:id="@+id/buynow"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:text="Buy"
-            android:fontFamily="@font/opensansveriable"
-            android:layout_below="@+id/addtocart"
-            android:backgroundTint="#57B65F"
-            android:background="@drawable/roundstyle_field"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"/>
-
 
     </RelativeLayout>
 

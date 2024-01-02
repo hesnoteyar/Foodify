@@ -82,6 +82,8 @@ public class PayMethod extends AppCompatActivity {
                     int totalAmount = getIntent().getIntExtra("totalAmount", 0);
                     paymentType = "Paid through Cash";
                     Intent intent = new Intent(PayMethod.this, Receipt.class);
+                    Log.d("PayMethod", "Total Amount passed to Receipt: " + totalAmount);
+                    Log.d("PayMethod", "Cart Items passed to Receipt: " + cartItems.toString());
                     intent.putExtra("totalAmount", getIntent().getIntExtra("totalAmount", 0));
                     intent.putExtra("cartItems", getIntent().getSerializableExtra("cartItems"));
                     startActivity(intent);

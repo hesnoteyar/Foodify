@@ -53,7 +53,7 @@ public class Receipt extends AppCompatActivity {
 
                         // Set the total amount in the TextView
                         TextView totalAmountTextView = findViewById(R.id.totalamount);
-                        totalAmountTextView.setText(String.valueOf(totalAmount));
+                        totalAmountTextView.setText("₱ " + String.valueOf(totalAmount));
 
                         // Set up the ListView with the cart items
                         ListView receiptListView = findViewById(R.id.ListviewItem);
