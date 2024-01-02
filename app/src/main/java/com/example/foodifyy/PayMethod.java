@@ -45,6 +45,9 @@ public class PayMethod extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_method);
 
+
+
+
         cartItems = new ArrayList<>(); // Initialize cartItems
 
         Cash = findViewById(R.id.Cashrdbtn);
@@ -73,16 +76,22 @@ public class PayMethod extends AppCompatActivity {
                  radioGroup = findViewById(R.id.rdgrppayment);
                 int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
 
+
                 if (selectedRadioButtonId == R.id.Cashrdbtn) {
+
+                    int totalAmount = getIntent().getIntExtra("totalAmount", 0);
                     paymentType = "Paid through Cash";
                     Intent intent = new Intent(PayMethod.this, Receipt.class);
                     intent.putExtra("totalAmount", getIntent().getIntExtra("totalAmount", 0));
                     intent.putExtra("cartItems", getIntent().getSerializableExtra("cartItems"));
                     startActivity(intent);
                     handleNoPointsPayment();
+
                 } else if (selectedRadioButtonId == R.id.Pointsrdbtn) {
+
                     paymentType = "Paid through Points";
                     handlePointsPayment();
+
                 }
             }
         });
@@ -100,9 +109,8 @@ public class PayMethod extends AppCompatActivity {
 
     private void handlePointsPayment() {
         int totalAmount = getIntent().getIntExtra("totalAmount", 0);
+        Log.d("PayMethod", "Total Amount: " + totalAmount);
 
-        // Assuming cartItems is the list you want to pass
-        ArrayList<CartItem> items = cartItems; // Implement this method to retrieve your cart items
 
         userPointsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

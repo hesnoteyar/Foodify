@@ -3,6 +3,7 @@ package com.example.foodifyy;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,13 @@ public class Receipt extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
+
+        int totalAmount = getIntent().getIntExtra("totalAmount", 0);
+        Log.d("PayMethod", "Total Amount: " + totalAmount);
+        TextView totalAmountTextView = findViewById(R.id.totalamount);
+        totalAmountTextView.setText(String.valueOf(totalAmount));
+
+
 
         // Check if the user is authenticated
         if (user != null) {
