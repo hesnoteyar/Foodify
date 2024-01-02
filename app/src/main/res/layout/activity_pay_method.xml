@@ -31,82 +31,60 @@
 
     <RadioGroup
         android:id="@+id/rdgrppayment"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="170dp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pay">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="350dp"
-            android:layout_height="125dp"
-            android:background="@drawable/input_background2">
+        <TextView
 
-            <ImageView
-                android:id="@+id/cashimg"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/cod"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cash"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/opensansveriable"
+            android:textSize="30dp"/>
 
-            <TextView
-                android:id="@+id/cashtxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CASH"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/cashimg"
-                android:layout_centerVertical="true"
-                android:textColor="@color/white"
-                android:fontFamily="@font/opensansveriable"
-                android:textStyle="bold"
-                android:textSize="30dp"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/cod"/>
 
-            <RadioButton
-                android:id="@+id/Cashrdbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/cashtxt"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="110dp"/>
-        </RelativeLayout>
+        <RadioButton
+            android:id="@+id/Cashrdbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/white"
+            android:layout_marginLeft="35dp"/>
 
-        <RelativeLayout
-            android:layout_marginTop="40dp"
-            android:layout_width="350dp"
-            android:layout_height="125dp"
-            android:background="@drawable/input_background2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Points"
+            android:textColor="@color/white"
+            android:fontFamily="@font/opensansveriable"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="7dp"/>
 
-            <ImageView
-                android:id="@+id/ptsimg"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/points"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/points"/>
 
-            <TextView
-                android:id="@+id/ptstxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="POINTS"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/ptsimg"
-                android:layout_centerVertical="true"
-                android:textColor="@color/white"
-                android:fontFamily="@font/opensansveriable"
-                android:textStyle="bold"
-                android:textSize="30dp"/>
+        <RadioButton
+            android:id="@+id/Pointsrdbtn"
+            android:layout_marginLeft="35dp"
+            android:buttonTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <RadioButton
-                android:id="@+id/Pointsrdbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/ptstxt"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="81dp"/>
-        </RelativeLayout>
+
+
 
     </RadioGroup>
 

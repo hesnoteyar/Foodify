@@ -1,6 +1,8 @@
 package com.example.foodifyy;
+import java.io.Serializable;
 
-public class CartItem {
+
+public class CartItem implements Serializable{
     private String foodName;
     private int quantity;
     private double amount;

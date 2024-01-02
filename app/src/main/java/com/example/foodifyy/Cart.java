@@ -84,7 +84,12 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int totalAmount = calculateTotalAmount();
-                startActivity(new Intent(Cart.this, PayMethod.class));
+
+                Intent intent = new Intent(Cart.this, PayMethod.class);
+                intent.putExtra("totalAmount", totalAmount);
+                intent.putExtra("cartItems", cartItems);
+                startActivity(intent);
+
             }
         });
 
@@ -108,7 +113,7 @@ public class Cart extends AppCompatActivity {
     private int calculateTotalAmount() {
         int totalAmount = 0;
         for (CartItem cartItem : cartItems) {
-            totalAmount += cartItem.getAmount() * cartItem.getQuantity();
+            totalAmount += cartItem.getAmount();
         }
 
         return totalAmount;
