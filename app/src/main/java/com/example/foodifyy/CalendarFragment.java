@@ -1,33 +1,24 @@
 package com.example.foodifyy;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CalendarFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CalendarFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -37,15 +28,6 @@ public class CalendarFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CalendarFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CalendarFragment newInstance(String param1, String param2) {
         CalendarFragment fragment = new CalendarFragment();
         Bundle args = new Bundle();
@@ -70,8 +52,43 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_calendar, container, false);
 
+        final TextView resultTextView = v.findViewById(R.id.resultTextView);
+        EditText search = v.findViewById(R.id.search);
+        Button searchButton = v.findViewById(R.id.searchButton);
 
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String searchTerm = search.getText().toString(); // Replace with your actual search term
+                new FetchFoodInfoTask(resultTextView).execute(searchTerm);
+            }
+        });
 
         return v;
+    }
+
+    private static class FetchFoodInfoTask extends AsyncTask<String, Void, FoodInfo> {
+        private TextView resultTextView;
+
+        public FetchFoodInfoTask(TextView resultTextView) {
+            this.resultTextView = resultTextView;
+        }
+
+        @Override
+        protected FoodInfo doInBackground(String... params) {
+            String searchTerm = params[0];
+            return FoodNutrientsApi.getFoodInfo(searchTerm);
+        }
+
+        @Override
+        protected void onPostExecute(FoodInfo foodInfo) {
+            if (foodInfo != null) {
+                resultTextView.setText(String.format("Fats: %.1f g \nProtein: %.1f g \nCalories: %.1f kcal",
+                        foodInfo.getFats(), foodInfo.getProtein(), foodInfo.getCalories()));
+            } else {
+                resultTextView.setText("No data found");
+                Log.e("FoodNutrientsApi", "API response is null");
+            }
+        }
     }
 }

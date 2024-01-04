@@ -1,11 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/calendarbackground"
+    android:background="#1C1B1B"
     tools:context=".CalendarFragment" >
 
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="373dp"
+        android:layout_height="40dp"
+        android:background="@drawable/input_background2"
+        android:layout_marginTop="60sp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10sp"
+        android:drawableLeft="@drawable/search_glyph"
+        android:hint="Find food you love"
+        android:layout_marginLeft="18sp"
+        android:drawablePadding="12sp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textColorHint="#808080"/>
 
-</FrameLayout>
+
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:fontFamily="@font/opensansveriable"
+        android:backgroundTint="#57B65F"
+        android:background="@drawable/roundstyle_field"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="500dp"/>
+
+    <RelativeLayout
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_background2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/search"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:fontFamily="@font/opensansveriable"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+    </RelativeLayout>
+</RelativeLayout>
