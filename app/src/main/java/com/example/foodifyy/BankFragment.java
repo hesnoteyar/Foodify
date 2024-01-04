@@ -84,8 +84,7 @@ public class BankFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_bank, container, false);
         Context context = getActivity();
         Topup = v.findViewById(R.id.topup);
-        recharge = v.findViewById(R.id.recharge);
-        scan = v.findViewById(R.id.scan);
+        recharge = v.findViewById(R.id.send);
         auth = FirebaseAuth.getInstance();
         points = v.findViewById(R.id.mainPts);
         FirebaseUser currentUser = auth.getCurrentUser();

@@ -61,8 +61,9 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_below="@+id/pts"
+        android:layout_alignParentStart="true"
         android:background="@drawable/input_background2"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="50dp">
 
         <ImageView
@@ -77,54 +78,21 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/recharge"
+        android:id="@+id/send"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_toRightOf="@+id/topup"
+        android:layout_marginRight="70dp"
         android:layout_below="@+id/pts"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentEnd="true"
         android:background="@drawable/input_background2"
-        android:layout_marginTop="50dp">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/generate"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/scan"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_toRightOf="@+id/recharge"
-        android:layout_below="@+id/pts"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/input_background2"
-        android:layout_marginTop="50dp">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/scan"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/topup"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="53dp"
+        android:layout_marginLeft="97dp"
         android:fontFamily="@font/opensansveriable"
         android:text="Top Up"
         android:textColor="@color/white"
@@ -133,28 +101,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/recharge"
-        android:text="Generate QR"
+        android:layout_below="@id/send"
+        android:text="Send Number"
         android:textColor="@color/white"
         android:fontFamily="@font/opensansveriable"
         android:textSize="17dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="155dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scan"
-        android:text="Scan QR"
-        android:textColor="@color/white"
-        android:textSize="17dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="290dp"/>
+        android:layout_marginLeft="230dp"/>
 
     <ViewFlipper
         android:layout_width="228dp"
         android:layout_height="322dp"
-        android:layout_below="@+id/recharge"
+        android:layout_below="@+id/send"
         android:layout_marginTop="60dp"
         android:layout_centerInParent="true"
         android:autoStart="true"
