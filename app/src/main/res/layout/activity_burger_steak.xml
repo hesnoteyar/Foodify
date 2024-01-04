@@ -8,6 +8,8 @@
     tools:context=".BurgerSteak">
 
 
+
+
     <ImageView
         android:id="@+id/burgerbanner"
         android:layout_width="match_parent"

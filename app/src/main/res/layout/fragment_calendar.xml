@@ -7,23 +7,48 @@
     android:background="#1C1B1B"
     tools:context=".CalendarFragment" >
 
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35sp"
+        android:fontFamily="@font/opensansveriable"
+        android:text="Hello, User!"
+        android:textColor="@color/white"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/good"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:layout_alignParentLeft="true"
+        android:text="Good to see you again!"
+        android:textColor="@color/white"
+        android:layout_marginLeft="27dp"
+        android:gravity="center_vertical"/>
+
     <EditText
+        android:layout_below="@+id/good"
         android:id="@+id/search"
         android:layout_width="373dp"
         android:layout_height="40dp"
-        android:background="@drawable/input_background2"
-        android:layout_marginTop="60sp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:paddingLeft="10sp"
-        android:drawableLeft="@drawable/search_glyph"
-        android:hint="Find food you love"
         android:layout_marginLeft="18sp"
+        android:background="@drawable/input_background2"
+        android:drawableLeft="@drawable/search_glyph"
         android:drawablePadding="12sp"
+        android:hint="Find food you love"
+        android:paddingLeft="10sp"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textColorHint="#808080"/>
-
-
+        android:textColorHint="#808080"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/searchButton"
@@ -37,13 +62,27 @@
         android:textColor="@color/white"
         android:layout_marginTop="500dp"/>
 
+    <Button
+        android:id="@+id/logButton"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Log"
+        android:fontFamily="@font/opensansveriable"
+        android:backgroundTint="#57B65F"
+        android:layout_below="@+id/searchButton"
+        android:background="@drawable/roundstyle_field"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"/>
+
     <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="373dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_background2"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/search"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/resultTextView"
@@ -52,9 +91,72 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:fontFamily="@font/opensansveriable"
             android:gravity="center"
             android:layout_marginTop="16dp"/>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="373dp"
+        android:layout_height="200dp"
+        android:background="@drawable/input_background2"
+        android:layout_below="@id/relative"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+
+
+        <ProgressBar
+            android:layout_marginTop="20dp"
+            android:id="@+id/caloriesProgress"
+            android:indeterminateOnly="false"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:progressDrawable="@drawable/custom_progressbar"
+            android:layout_marginLeft="50dp"
+            android:progressTint="@color/hypergreen"
+        android:layout_height="100dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calorie Count"
+            android:textColor="@color/white"
+            android:layout_below="@id/caloriesProgress"
+            android:textSize="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"/>
+
+        <ProgressBar
+            android:layout_marginTop="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="50dp"
+            android:indeterminateOnly="false"
+            android:id="@+id/proteinProgress"
+            android:progressTint="@color/hypergreen"
+            android:progressDrawable="@drawable/custom_progressbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Protein Count"
+            android:textColor="@color/white"
+            android:layout_below="@id/proteinProgress"
+            android:textSize="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"/>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </RelativeLayout>
