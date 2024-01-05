@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.Date;
 import java.util.List;
 
@@ -34,14 +36,19 @@ public class CalendarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ProgressBar caloriesProgress;
-    private ProgressBar proteinProgress;
+    private TextView caloriesProgress;
+    private TextView proteinProgress;
     private DatabaseReference weightDatabaseRef;
     private DatabaseReference usernameDatabaseRef;
     private TextView greeting;
     FirebaseAuth auth;
     FirebaseUser currentUser;
     private double userWeight;  // Add this variable to store the user's weight
+
+    private double totalCalories = 0;
+    private double totalProtein = 0;
+
+
 
     public CalendarFragment() {
         // Required empty public constructor
@@ -71,14 +78,13 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        caloriesProgress = v.findViewById(R.id.caloriesProgress);
-        proteinProgress = v.findViewById(R.id.proteinProgress);
         final TextView resultTextView = v.findViewById(R.id.resultTextView);
         EditText search = v.findViewById(R.id.search);
         Button searchButton = v.findViewById(R.id.searchButton);
         Button logButton = v.findViewById(R.id.logButton);
         greeting = v.findViewById(R.id.tv1);
-
+        caloriesProgress = v.findViewById(R.id.calorieTextview);
+        proteinProgress = v.findViewById(R.id.proteinTextview);
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
         weightDatabaseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
@@ -105,6 +111,9 @@ public class CalendarFragment extends Fragment {
         return v;
     }
 
+
+
+
     private void fetchUserDataAndUpdateProgressTrackers() {
         weightDatabaseRef.child("weight").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -122,6 +131,7 @@ public class CalendarFragment extends Fragment {
                     Log.d("YourTag", "Suggested Calories: " + suggestedCalories);
                     Log.d("YourTag", "Suggested Protein: " + suggestedProtein);
 
+
                     updateProgressTrackers(suggestedCalories, suggestedProtein);
 
                 }
@@ -137,11 +147,9 @@ public class CalendarFragment extends Fragment {
     private void updateProgressTrackers(double suggestedCalories, double suggestedProtein) {
 
 
-        caloriesProgress.setMax((int) suggestedCalories);
-        proteinProgress.setMax((int) suggestedProtein);
 
-        caloriesProgress.setProgress(100);
-        proteinProgress.setProgress(0);
+        proteinProgress.setText("0 / "+ suggestedProtein + " g");
+        caloriesProgress.setText("0 / "+ suggestedCalories + " kcal");
 
 
     }

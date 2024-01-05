@@ -99,53 +99,51 @@
 
     <RelativeLayout
         android:layout_width="373dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:background="@drawable/input_background2"
         android:layout_below="@id/relative"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp">
 
 
-        <ProgressBar
-            android:layout_marginTop="20dp"
-            android:id="@+id/caloriesProgress"
-            android:indeterminateOnly="false"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="100dp"
-            android:progressDrawable="@drawable/custom_progressbar"
-            android:layout_marginLeft="50dp"
-            android:progressTint="@color/hypergreen"
-        android:layout_height="100dp" />
+        <TextView
+            android:id="@+id/calorieTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 kcal"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="50dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calorie Count"
             android:textColor="@color/white"
-            android:layout_below="@id/caloriesProgress"
-            android:textSize="20dp"
+            android:layout_below="@id/calorieTextview"
+            android:textSize="18dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"/>
 
-        <ProgressBar
-            android:layout_marginTop="20dp"
+        <TextView
+            android:id="@+id/proteinTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 g"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="50dp"
-            android:indeterminateOnly="false"
-            android:id="@+id/proteinProgress"
-            android:progressTint="@color/hypergreen"
-            android:progressDrawable="@drawable/custom_progressbar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
+            android:layout_marginRight="60dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="50dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Protein Count"
             android:textColor="@color/white"
-            android:layout_below="@id/proteinProgress"
-            android:textSize="20dp"
+            android:layout_below="@id/proteinTextview"
+            android:textSize="18dp"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="40dp"
             android:layout_marginTop="40dp"/>

@@ -43,6 +43,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="5dp"
         android:paddingTop="15dp"
+        android:inputType="number"
         android:textColorHint="@color/white"
 
         app:boxStrokeColor="#000000"
@@ -102,7 +103,7 @@
             android:background="@drawable/input_background"
             android:fontFamily="@font/opensansveriable"
             android:hint="Weight (in kg)"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLength="4"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
@@ -140,12 +141,13 @@
             android:background="@drawable/input_background"
             android:fontFamily="@font/opensansveriable"
             android:hint="Height (in cm)"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLength="4"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
             android:textColorHighlight="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 

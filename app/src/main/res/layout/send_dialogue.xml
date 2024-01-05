@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/input_background2"
     android:padding="16dp">
 
@@ -14,19 +15,24 @@
         android:layout_marginEnd="16dp"
         android:textColorHint="@color/white"
         android:layout_marginBottom="5dp"
-        android:paddingTop="15dp">
+        android:paddingTop="15dp"
+
+        app:counterEnabled="true"
+        app:counterMaxLength="11"
+        app:counterTextColor="@color/white">
 
         <EditText
             android:id="@+id/number"
             android:fontFamily="@font/opensansveriable"
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
+            android:maxLength="11"
             android:layout_height="60dp"
             android:autofillHints=""
             android:background="@drawable/input_background"
             android:hint="Enter number"
             android:textSize="15sp"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
             android:textColorHighlight="@color/white" />
@@ -39,12 +45,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="5"
+        app:counterTextColor="@color/white"
         android:layout_marginEnd="16dp"
         android:textColorHint="@color/white"
         android:layout_marginBottom="5dp"
         android:paddingTop="15dp">
 
         <EditText
+            android:maxLength="5"
             android:id="@+id/amount"
             android:fontFamily="@font/opensansveriable"
             android:layout_marginBottom="5dp"
@@ -54,7 +64,7 @@
             android:background="@drawable/input_background"
             android:hint="Enter amount"
             android:textSize="15sp"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
             android:textColorHighlight="@color/white" />
