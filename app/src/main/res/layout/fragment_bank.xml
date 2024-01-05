@@ -85,7 +85,17 @@
         android:layout_below="@+id/pts"
         android:layout_alignParentEnd="true"
         android:background="@drawable/input_background2"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,7 +117,7 @@
         android:fontFamily="@font/opensansveriable"
         android:textSize="17dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="230dp"/>
+        android:layout_marginLeft="220dp"/>
 
     <ViewFlipper
         android:layout_width="228dp"
