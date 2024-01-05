@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +45,7 @@ public class BankFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     FirebaseAuth auth;
-    ConstraintLayout Topup, recharge, scan;
+    ConstraintLayout Topup, send;
     TextView points;
 
     public BankFragment() {
@@ -82,20 +84,24 @@ public class BankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_bank, container, false);
-        Context context = getActivity();
         Topup = v.findViewById(R.id.topup);
-        recharge = v.findViewById(R.id.send);
+        send = v.findViewById(R.id.send);
         auth = FirebaseAuth.getInstance();
         points = v.findViewById(R.id.mainPts);
-        FirebaseUser currentUser = auth.getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("points");
         DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users");
         DatabaseReference transactionHistoryReference = FirebaseDatabase.getInstance().getReference("transaction_history");
+
+        Context context = getActivity();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
 
         databaseReference.child("topUp1").setValue("50");
         databaseReference.child("topUp2").setValue("100");
         databaseReference.child("topUp3").setValue("500");
         databaseReference.child("topUp4").setValue("1000");
+
+        points.setText("0");
 
         userReference.child(currentUser.getUid()).child("points").addValueEventListener(new ValueEventListener() {
             @Override
@@ -113,6 +119,16 @@ public class BankFragment extends Fragment {
 
             }
         });
+
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSendPointsDialog();
+            }
+        });
+
+
         Topup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,6 +184,104 @@ public class BankFragment extends Fragment {
         });
 
         return v;
+    }
+
+    private void openSendPointsDialog() {
+        Dialog sendDialog = new Dialog(getContext());
+        sendDialog.setContentView(R.layout.send_dialogue);
+
+        EditText recipientNumberEditText = sendDialog.findViewById(R.id.number);
+        EditText pointsEditText = sendDialog.findViewById(R.id.amount);
+        Button sendButton = sendDialog.findViewById(R.id.send);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String recipientNumber = recipientNumberEditText.getText().toString().trim();
+                String pointsStr = pointsEditText.getText().toString().trim();
+
+                if (!recipientNumber.isEmpty() && !pointsStr.isEmpty()) {
+                    int pointsToSend = Integer.parseInt(pointsStr);
+                    sendPointsToUser(recipientNumber, pointsToSend);
+                    sendDialog.dismiss();
+                } else {
+                    Toast.makeText(requireContext(), "Enter recipient number and points", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        sendDialog.setTitle("Custom Dialog");
+        sendDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        sendDialog.show();
+
+    }
+
+    private void sendPointsToUser(String recipientNumber, int points) {
+        FirebaseUser currentUser = auth.getCurrentUser();
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users");
+
+        userReference.orderByChild("phonenumber").equalTo(recipientNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        String recipientUserId = userSnapshot.getKey();
+                        updatePointsForRecipient(recipientUserId, points);
+                        deductPointsForSender(points);
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "Recipient not found", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Error finding recipient: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void deductPointsForSender(int points) {
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users");
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+        userReference.child(currentUser.getUid()).child("points").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    int currentPoints = snapshot.getValue(Integer.class);
+                    int newPoints = currentPoints - points;
+                    userReference.child(currentUser.getUid()).child("points").setValue(newPoints);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Error deducting points for sender: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void updatePointsForRecipient(String recipientUserId, int points) {
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users");
+
+        userReference.child(recipientUserId).child("points").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    int currentPoints = snapshot.getValue(Integer.class);
+                    int newPoints = currentPoints + points;
+                    userReference.child(recipientUserId).child("points").setValue(newPoints);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Error updating points for recipient: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void handleTopUp(String topUpKey) {
