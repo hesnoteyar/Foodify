@@ -22,41 +22,44 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginBottom="50dp"
         android:id="@+id/TE1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_next"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:textColorHint="@color/white"
+        android:maxLength="10"
         android:paddingTop="15dp"
 
 
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="#000000"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:boxStrokeColor="#000000"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/white"
         app:hintTextColor="#57B65F"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/white">
 
         <EditText
             android:id="@+id/password2"
-            android:fontFamily="@font/opensansveriable"
-            android:layout_marginBottom="40dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:autofillHints=""
             android:background="@drawable/input_background"
+            android:fontFamily="@font/opensansveriable"
             android:hint="Retype Password"
-            android:textSize="15sp"
             android:inputType="text"
             android:paddingStart="20dp"
+            android:maxLength="10"
             android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/white" />
+            android:textColorHighlight="@color/white"
+            android:textSize="15sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TE2"
@@ -65,34 +68,38 @@
         android:layout_above="@+id/TE1"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:textColorHint="@color/white"
+        android:maxLength="10"
         android:paddingTop="15dp"
-
-
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
+        android:textColorHint="@color/white"
         app:boxStrokeColor="#000000"
+        app:boxStrokeWidth="0dp"
+
+
+        app:boxStrokeWidthFocused="0dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/white"
         app:hintTextColor="#57B65F"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/white">
 
         <EditText
             android:id="@+id/password"
-            android:fontFamily="@font/opensansveriable"
-            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
             android:autofillHints=""
+            android:maxLength="10"
             android:background="@drawable/input_background"
+            android:fontFamily="@font/opensansveriable"
             android:hint="Password"
             android:inputType="text"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/white" />
+            android:textColorHighlight="@color/white"
+            android:textSize="15sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,34 +108,39 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/TE2"
         android:layout_marginStart="16dp"
+
         android:layout_marginEnd="16dp"
-        android:textColorHint="@color/white"
+        android:maxLength="10"
         android:paddingTop="15dp"
+        android:textColorHint="@color/white"
 
 
+        app:boxStrokeColor="#000000"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:boxStrokeColor="#000000"
+        app:counterEnabled="true"
+        app:counterMaxLength="40"
+        app:counterTextColor="@color/white"
         app:hintTextColor="#57B65F"
         app:passwordToggleTint="@color/white">
 
         <EditText
             android:id="@+id/email_add"
-            android:fontFamily="@font/opensansveriable"
-            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textSize="15sp"
+            android:maxLength="40"
+            android:layout_marginBottom="5dp"
             android:autofillHints=""
             android:background="@drawable/input_background"
+            android:fontFamily="@font/opensansveriable"
             android:hint="Email Address"
             android:inputType="text"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/white" />
+            android:textColorHighlight="@color/white"
+            android:textSize="15sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -138,30 +150,35 @@
         android:layout_above="@+id/TE3"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:textColorHint="@color/white"
+        android:maxLength="10"
         android:paddingTop="15dp"
+        android:textColorHint="@color/white"
 
 
+        app:boxStrokeColor="#000000"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:boxStrokeColor="#000000"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/white"
         app:hintTextColor="#57B65F"
         app:passwordToggleTint="@color/white">
 
         <EditText
             android:id="@+id/username"
-            android:fontFamily="@font/opensansveriable"
-            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
+            android:maxLength="10"
             android:layout_height="60dp"
+            android:layout_marginBottom="5dp"
             android:autofillHints=""
             android:background="@drawable/input_background"
+            android:fontFamily="@font/opensansveriable"
             android:hint="Username"
-            android:textSize="15sp"
             android:inputType="text"
             android:paddingStart="20dp"
             android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/white" />
+            android:textColorHighlight="@color/white"
+            android:textSize="15sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
