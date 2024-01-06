@@ -51,29 +51,17 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/searchButton"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:fontFamily="@font/opensansveriable"
-        android:backgroundTint="#57B65F"
-        android:background="@drawable/roundstyle_field"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
-        android:layout_marginTop="500dp"/>
-
-    <Button
         android:id="@+id/logButton"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="Log"
         android:fontFamily="@font/opensansveriable"
         android:backgroundTint="#57B65F"
-        android:layout_below="@+id/searchButton"
+        android:layout_below="@+id/layout"
         android:background="@drawable/roundstyle_field"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="40dp"/>
 
     <RelativeLayout
         android:id="@+id/relative"
@@ -98,6 +86,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="373dp"
         android:layout_height="150dp"
         android:background="@drawable/input_background2"

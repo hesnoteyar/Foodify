@@ -23,8 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.Date;
 import java.util.List;
 
@@ -44,11 +42,16 @@ public class CalendarFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser currentUser;
     private double userWeight;  // Add this variable to store the user's weight
+    EditText search;
+    TextView resultTextView;
+    Button searchButton, logButton;
 
-    private double totalCalories = 0;
-    private double totalProtein = 0;
+    private double totalLoggedCalories = 0;
+    private double totalLoggedProtein = 0;
 
-
+    // Added variables
+    private double proteinValue;  // Add this variable to store protein value
+    private double caloriesValue;  // Add this variable to store calories value
 
     public CalendarFragment() {
         // Required empty public constructor
@@ -78,10 +81,9 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        final TextView resultTextView = v.findViewById(R.id.resultTextView);
-        EditText search = v.findViewById(R.id.search);
-        Button searchButton = v.findViewById(R.id.searchButton);
-        Button logButton = v.findViewById(R.id.logButton);
+        resultTextView = v.findViewById(R.id.resultTextView);
+        search = v.findViewById(R.id.search);
+        logButton = v.findViewById(R.id.logButton);
         greeting = v.findViewById(R.id.tv1);
         caloriesProgress = v.findViewById(R.id.calorieTextview);
         proteinProgress = v.findViewById(R.id.proteinTextview);
@@ -96,23 +98,36 @@ public class CalendarFragment extends Fragment {
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
-        });
-
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 String searchTerm = search.getText().toString(); // Replace with your actual search term
-                new FetchFoodInfoTask(resultTextView).execute(searchTerm);
+                new FetchFoodInfoTask(resultTextView, new FoodInfoCallback() {
+                    @Override
+                    public void onFoodInfoLoaded(FoodInfo foodInfo) {
+                        if (foodInfo != null) {
+                            proteinValue = foodInfo.getProtein();  // Set protein value
+                            caloriesValue = foodInfo.getCalories();  // Set calories value
+
+                            // Fetch user data and update progress trackers
+                            fetchUserDataAndUpdateProgressTrackers();
+
+                            totalLoggedCalories += caloriesValue;
+                            totalLoggedProtein += proteinValue;
+
+                            updateTotalLoggedValues();
+                        } else {
+                            Log.e("FoodNutrientsApi", "API response is null");
+                        }
+                    }
+                }).execute(searchTerm);
             }
         });
-
         return v;
     }
 
-
-
+    private void updateTotalLoggedValues() {
+        // Display the updated total logged values
+        proteinProgress.setText(String.format("%.1f g", totalLoggedProtein));
+        caloriesProgress.setText(String.format("%.1f kcal", totalLoggedCalories));
+    }
 
     private void fetchUserDataAndUpdateProgressTrackers() {
         weightDatabaseRef.child("weight").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -124,34 +139,26 @@ public class CalendarFragment extends Fragment {
 
                     Log.d("YourTag", "User Weight: " + userWeight);
 
-
                     double suggestedCalories = calculateSuggestedCalories(userWeight);
                     double suggestedProtein = calculateSuggestedProtein(userWeight);
 
                     Log.d("YourTag", "Suggested Calories: " + suggestedCalories);
                     Log.d("YourTag", "Suggested Protein: " + suggestedProtein);
 
-
                     updateProgressTrackers(suggestedCalories, suggestedProtein);
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle onCancelled
             }
         });
     }
 
     private void updateProgressTrackers(double suggestedCalories, double suggestedProtein) {
-
-
-
-        proteinProgress.setText("0 / "+ suggestedProtein + " g");
-        caloriesProgress.setText("0 / "+ suggestedCalories + " kcal");
-
-
+        proteinProgress.setText(String.format("%.1f / %.1f g", totalLoggedProtein, suggestedProtein));
+        caloriesProgress.setText(String.format("%.1f / %.1f kcal", totalLoggedCalories, suggestedCalories));
     }
 
     private double calculateSuggestedProtein(double weight) {
@@ -172,12 +179,13 @@ public class CalendarFragment extends Fragment {
         });
     }
 
-
     private static class FetchFoodInfoTask extends AsyncTask<String, Void, FoodInfo> {
         private TextView resultTextView;
+        private FoodInfoCallback callback;
 
-        public FetchFoodInfoTask(TextView resultTextView) {
+        public FetchFoodInfoTask(TextView resultTextView, FoodInfoCallback callback) {
             this.resultTextView = resultTextView;
+            this.callback = callback;
         }
 
         @Override
@@ -188,6 +196,9 @@ public class CalendarFragment extends Fragment {
 
         @Override
         protected void onPostExecute(FoodInfo foodInfo) {
+            if (callback != null) {
+                callback.onFoodInfoLoaded(foodInfo);
+            }
             if (foodInfo != null) {
                 resultTextView.setText(String.format("Fats: %.1f g \nProtein: %.1f g \nCalories: %.1f kcal",
                         foodInfo.getFats(), foodInfo.getProtein(), foodInfo.getCalories()));
