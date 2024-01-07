@@ -280,28 +280,6 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PWD"
-                android:layout_marginLeft="20dp"
-                android:textColor="#808080"
-                android:textSize="17dp"
-                android:fontFamily="@font/opensansveriable"
-                android:layout_marginTop="20dp"
-                />
-
-            <TextView
-                android:id="@+id/display_pwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="null"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                android:fontFamily="@font/opensansveriable"
-                android:layout_marginTop="10dp"
-                />
         </LinearLayout>
 
 
