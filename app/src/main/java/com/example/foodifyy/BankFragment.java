@@ -295,7 +295,7 @@ public class BankFragment extends Fragment {
             if (dataSnapshot.exists()) {
                 int topUpPoints = Integer.parseInt(dataSnapshot.getValue(String.class));
 
-                // Retrieve the current user's points from the users table
+                // Retrieve the current 's points from the users table
                 userReference.child(currentUser.getUid()).child("points").get().addOnSuccessListener(userPointsSnapshot -> {
                     if (userPointsSnapshot.exists()) {
                         int currentPoints = userPointsSnapshot.getValue(Integer.class);
@@ -323,17 +323,13 @@ public class BankFragment extends Fragment {
     private void saveTransactionToHistory(String userId, int topUpPoints) {
         DatabaseReference transactionHistoryReference = FirebaseDatabase.getInstance().getReference("transaction_history");
 
-        // Create a unique key for the transaction
         String transactionKey = transactionHistoryReference.push().getKey();
 
-        // Build the transaction object
         Transaction transaction = new Transaction(userId, "TopUp", topUpPoints);
         transaction.setTransactionKey(transactionKey); // Set the transactionKey
 
-        // Set the transaction date
         transaction.setTransactionDate(new Date());
 
-        // Save the transaction in the transaction history node
         transactionHistoryReference.child(userId).child(transactionKey).setValue(transaction);
     }
 
